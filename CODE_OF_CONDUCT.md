@@ -9,21 +9,21 @@ A list of consequences for unacceptable behaviour
 A procedure for reporting and dealing with unacceptable behaviour
 
 
-### Introduction 
+## Introduction 
 
 This document aims to define, foster, and uphold a positive environment that is inclusive and respectful of all individuals. While this document is not comprehensive, we hope that it acts as the foundation for establishing standards and behaviours expected from group members. 
 
-### Scope 
+## Scope 
 
 The Code of Conduct applies to all members of DSCI 310's Group 16, and is applicable to activities including, but not limited to, in-person interaction, virtual interactions, work produced, and interactions with the larger community. 
 
-### Diversity and Inclusion 
+## Diversity and Inclusion 
 
 Our priority is to create a supportive learning environment governed by ethics and integrity. We strongly believe that diversity is a strength and that everyone should be included, regardless of background, abilities, or differences. Diversity and inclusion goes beyond just team composition and member demographic. We hope to uphold a culture where members feel comfortable and supported to share their opinions, perspectives, and engage in respectful dialogue while staying mindful of individual differences. 
 
 ### Expectations of Behaviour 
 
-##### Acceptable Behaviours 
+#### Acceptable Behaviours 
 
 **Respectful Dialogue** - Diverse opinions and perspective help challenge existing ideas and promotes new ways of thinking. Conflicting opinions are inevitable and should be navigated with mutual respect and open-mindedness. Team members have a responsibility to create space for all members to share their ideas and work, and offer constructive well-meaning criticism that aims to improve the quality of the work itself. 
 
@@ -42,7 +42,7 @@ Messages should be responded to within 24 hours, preferably as soon as possible.
 All deadlines, both external and internal, should be strictly met. If unable to do so, the reason should be communicated to the rest of the team as early as possible.
 
 
-##### Unacceptable Behaviours 
+#### Unacceptable Behaviours 
 
 While we do not anticipate unacceptable behaviours, we find it beneficial to outline behaviours that negative affect team performance. 
 
@@ -55,6 +55,6 @@ While we do not anticipate unacceptable behaviours, we find it beneficial to out
 **Disrespectful or Discriminatory Behaviour** - Group 16 has a zero-tolerance policy to harmful or damaging behaviour. 
 
 
-##### Reporting Behaviour 
+### Reporting Behaviour 
 
 We hope to create an environment that is understanding and supportive of personal circumstances and growth. Our hope and expectation is that all team issues or conflicts can be resolved internally. All unacceptable behaviours should be flagged to the group as soon as possiblewhere mitigatory actions will be discussed to prevent re-occurence of said behaviour. It is critical that such discussions focus on the behaviours and outcomes of the behaviour pertinent to the project, and does not engage in personal remarks or irrelevant details.  
