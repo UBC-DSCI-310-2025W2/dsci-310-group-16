@@ -10,3 +10,23 @@ Possible Questions:
 - Is this fictonal patient at risk of developing diabetes?
 - What is the diabetes risk score of this fictional patient?|
 
+
+
+(PCOS Prediction Dataset)[https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos]
+Description
+- One dataset for observations where individuals had PCOS, other does not have PCOS
+- creative commons 4.0 --> we are free to distribute
+
+Possible questions
+- Does this individual have PCOS?
+- Does this individual have infertility?
+
+(Fish Dataset)[https://www.kaggle.com/datasets/vipullrathod/fish-market]
+Description
+- Different fish species with their numerical characteristics
+- A very small dataset so won't be too computationally expensive
+- perhaps we can do a knn since the dataset is pretty small?
+- there is some class imbalance though 
+
+Possible questions
+- what species of fish is this unknown datapoint?
