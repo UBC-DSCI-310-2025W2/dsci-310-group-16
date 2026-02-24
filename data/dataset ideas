@@ -9,7 +9,7 @@ Description
 
 Research Q: what species of fish is this unknown datapoint? have a few test/train datapoints
 
-[Galtons Height dataset)[https://r-packages.io/datasets/GaltonFamilies]
+(Galtons Height dataset)[https://r-packages.io/datasets/GaltonFamilies]
 - pretty old but wellknown dataset that predicts height based on family information 
 - GPL license --> free to redistribute and use 
 - small dataset --> 934 rows and 8 columns so it'll be fast to compute on 
