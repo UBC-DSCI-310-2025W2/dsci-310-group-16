@@ -21,7 +21,8 @@ The Code of Conduct applies to all members of DSCI 310's Group 16, and is applic
 
 Our priority is to create a supportive learning environment governed by ethics and integrity. We strongly believe that diversity is a strength and that everyone should be included, regardless of background, abilities, or differences. Diversity and inclusion goes beyond just team composition and member demographic. We hope to uphold a culture where members feel comfortable and supported to share their opinions, perspectives, and engage in respectful dialogue while staying mindful of individual differences. 
 
-### Expectations of Behaviour 
+
+## Expectations of Behaviour 
 
 #### Acceptable Behaviours 
 
@@ -55,6 +56,6 @@ While we do not anticipate unacceptable behaviours, we find it beneficial to out
 **Disrespectful or Discriminatory Behaviour** - Group 16 has a zero-tolerance policy to harmful or damaging behaviour. 
 
 
-### Reporting Behaviour 
+## Reporting Behaviour 
 
 We hope to create an environment that is understanding and supportive of personal circumstances and growth. Our hope and expectation is that all team issues or conflicts can be resolved internally. All unacceptable behaviours should be flagged to the group as soon as possiblewhere mitigatory actions will be discussed to prevent re-occurence of said behaviour. It is critical that such discussions focus on the behaviours and outcomes of the behaviour pertinent to the project, and does not engage in personal remarks or irrelevant details.  
