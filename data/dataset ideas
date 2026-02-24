@@ -1,5 +1,12 @@
 
 
-|Link   | Description     | Possible Research Questions |
-| ------------- | ------------- | ------------| 
-| https://www.kaggle.com/datasets/vishardmehta/diabetes-risk-prediction-dataset |<li>Different predictors for predicting a calculcated diabetes risk score</li> <li>completely ficitonal and open source - no attribution issues</li> <li> regression or classification both possible</li>  | <li> Is this fictonal patient at risk of developing diabetes?</li> <li> What is the diabetes risk score of this fictional patient?</li>  |
+(Diabetes Prediction Dataset)[https://www.kaggle.com/datasets/vishardmehta/diabetes-risk-prediction-dataset]
+Description: 
+- Different predictors for predicting a calculcated diabetes risk score. 
+- completely ficitonal and open source so theres no attribution issues. 
+- Will be suitable for both
+
+Possible Questions: 
+- Is this fictonal patient at risk of developing diabetes?
+- What is the diabetes risk score of this fictional patient?|
+
