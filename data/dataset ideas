@@ -5,6 +5,13 @@ Description
 - pretty small dataset (~7200 rows) so won't be too computationally expensive
 - perhaps we can do a knn since the dataset is manageable
 - there is a bit of class imbalance though (ex. lots of Perch)
+- CC 4.0 license so we are free to redistribute 
 
-Possible questions
-- what species of fish is this unknown datapoint? have a few test/train datapoints
+Research Q: what species of fish is this unknown datapoint? have a few test/train datapoints
+
+[Galtons Height dataset)[https://r-packages.io/datasets/GaltonFamilies]
+- pretty old but wellknown dataset that predicts height based on family information 
+- GPL license --> free to redistribute and use 
+- small dataset --> 934 rows and 8 columns so it'll be fast to compute on 
+
+Research Q: What is the predicted height of the observation?
