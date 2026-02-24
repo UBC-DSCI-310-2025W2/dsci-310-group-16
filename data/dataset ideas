@@ -1,1 +1,10 @@
-...
+
+(Fish Dataset)[https://data.mendeley.com/datasets/bgsx9fjw4d/2]
+Description
+- Different fish species with their numerical characteristics
+- pretty small dataset (~7200 rows) so won't be too computationally expensive
+- perhaps we can do a knn since the dataset is manageable
+- there is a bit of class imbalance though (ex. lots of Perch)
+
+Possible questions
+- what species of fish is this unknown datapoint? have a few test/train datapoints
