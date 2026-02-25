@@ -24,7 +24,7 @@ Our priority is to create a supportive learning environment governed by ethics a
 
 ## Expectations of Behaviour 
 
-#### Acceptable Behaviours 
+#### *Acceptable Behaviours* 
 
 **Respectful Dialogue** - Diverse opinions and perspective help challenge existing ideas and promotes new ways of thinking. Conflicting opinions are inevitable and should be navigated with mutual respect and open-mindedness. Team members have a responsibility to create space for all members to share their ideas and work, and offer constructive well-meaning criticism that aims to improve the quality of the work itself. 
 
@@ -43,11 +43,11 @@ Messages should be responded to within 24 hours, preferably as soon as possible.
 All deadlines, both external and internal, should be strictly met. If unable to do so, the reason should be communicated to the rest of the team as early as possible.
 
 
-#### Unacceptable Behaviours 
+#### *Unacceptable Behaviours* 
 
 While we do not anticipate unacceptable behaviours, we find it beneficial to outline behaviours that negative affect team performance. 
 
-**Plagarism** - As members of the academic community, we do not tolerate plagiarism or improper acknowledge of work. We draw upon UBC's definition of plagarism (ie."submitting or presenting the work of another person as one’s own, without appropriate referencing" (will cite this later - https://vancouver.calendar.ubc.ca/campus-wide-policies-and-regulations/student-conduct-and-discipline/discipline-academic-misconduct/3-academic-misconduct-ubc-students)), applying this definition to the w ork of ourselves, organizations, and other individuals. 
+**Plagiarism** - As members of the academic community, we do not tolerate plagiarism or improper acknowledge of work. We draw upon UBC's definition of plagiarism (ie."submitting or presenting the work of another person as one’s own, without appropriate referencing" (will cite this later - https://vancouver.calendar.ubc.ca/campus-wide-policies-and-regulations/student-conduct-and-discipline/discipline-academic-misconduct/3-academic-misconduct-ubc-students)), applying this definition to the work of ourselves, organizations, and other individuals. 
 - Consequence: Any work found to be improperly unattributed will be re-done. If a pattern of academic misconduct is observed, it will be escalated to course staff
 
 **Poor Communication** - This includes not responding to team communications, vague and unhelpful comments, or consistent pattern of last-minute notifications of personal circumstances. 
@@ -59,3 +59,5 @@ While we do not anticipate unacceptable behaviours, we find it beneficial to out
 ## Reporting Behaviour 
 
 We hope to create an environment that is understanding and supportive of personal circumstances and growth. Our hope and expectation is that all team issues or conflicts can be resolved internally. All unacceptable behaviours should be flagged to the group as soon as possiblewhere mitigatory actions will be discussed to prevent re-occurence of said behaviour. It is critical that such discussions focus on the behaviours and outcomes of the behaviour pertinent to the project, and does not engage in personal remarks or irrelevant details.  
+
+[i need to finish this - not sure what else to say right now.....]
