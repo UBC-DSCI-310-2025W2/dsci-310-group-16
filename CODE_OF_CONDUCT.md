@@ -1,9 +1,9 @@
 # Group 16 - Code of Conduct 
 
-**the instructions - delete afterwards**
+> **the instructions - delete afterwards**
 At minimum, we believe that a good/effective code of conduct should include:
 
-A Statement on diversity and inclusivity
+> A Statement on diversity and inclusivity
 Details on expected, and unacceptable behaviour
 A list of consequences for unacceptable behaviour
 A procedure for reporting and dealing with unacceptable behaviour
@@ -26,7 +26,7 @@ Our priority is to create a supportive learning environment governed by ethics a
 
 #### *Acceptable Behaviours* 
 
-**Respectful Dialogue** - Diverse opinions and perspective help challenge existing ideas and promotes new ways of thinking. Conflicting opinions are inevitable and should be navigated with mutual respect and open-mindedness. Team members have a responsibility to create space for all members to share their ideas and work, and offer constructive well-meaning criticism that aims to improve the quality of the work itself. 
+**Respectful Dialogue** - Diverse opinions and perspective help challenge existing ideas and promotes new ways of thinking. Conflicting opinions are inevitable and should be navigated with mutual respect and open-mindedness. Team members have a responsibility to create space for all members to share their ideas and work, and offer constructive well-meaning constructive criticism that aims to improve the quality of the work itself. 
 
 **Timely Communication** - We expect consistent communication between the team, both in-person and virtual. This includes communications about the following:
 - regular updates about project status
@@ -43,6 +43,7 @@ Messages should be responded to within 24 hours, preferably as soon as possible.
 All deadlines, both external and internal, should be strictly met. If unable to do so, the reason should be communicated to the rest of the team as early as possible.
 
 
+
 #### *Unacceptable Behaviours* 
 
 While we do not anticipate unacceptable behaviours, we find it beneficial to outline behaviours that negative affect team performance. 
@@ -53,11 +54,11 @@ While we do not anticipate unacceptable behaviours, we find it beneficial to out
 **Poor Communication** - This includes not responding to team communications, vague and unhelpful comments, or consistent pattern of last-minute notifications of personal circumstances. 
 - Consequence: We hope initial communication issues can be resolved internally be internal team interventions and feedback. Consistent poor communication will be reflected in team feedback and will be escalated if absolutely necessary.
 
-**Disrespectful or Discriminatory Behaviour** - Group 16 has a zero-tolerance policy to harmful or damaging behaviour. 
+**Disrespectful, Discriminatory, and Offensive Behaviour** - Group 16 has a zero-tolerance policy to harmful or damaging behaviour. Any and all instances of such behaviour will be immediately reported. 
 
 
 ## Reporting Behaviour 
 
-We hope to create an environment that is understanding and supportive of personal circumstances and growth. Our hope and expectation is that all team issues or conflicts can be resolved internally. All unacceptable behaviours should be flagged to the group as soon as possiblewhere mitigatory actions will be discussed to prevent re-occurence of said behaviour. It is critical that such discussions focus on the behaviours and outcomes of the behaviour pertinent to the project, and does not engage in personal remarks or irrelevant details.  
+We hope to create an environment that is understanding and supportive of personal circumstances and growth. Our hope and expectation is that all team issues or conflicts can be resolved internally. All unacceptable behaviours should be flagged to the group as soon as possible where mitigatory actions will be discussed to prevent re-occurence of said behaviour. It is critical that such discussions focus on the behaviours and outcomes of the behaviour pertinent to the project, and does not engage in personal remarks or irrelevant details.  
 
-[i need to finish this - not sure what else to say right now.....]
+Patterns of repeated behaviour will be eslated if needed. In accordance with the DSCI 310 course Code of Conduct, the instructor will be notified. 
