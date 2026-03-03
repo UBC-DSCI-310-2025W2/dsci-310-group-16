@@ -1,3 +1,8 @@
+#manual additions
+
+.DS_Store
+.Rproj.user
+
 # History files
 .Rhistory
 .Rapp.history
