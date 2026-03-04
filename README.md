@@ -9,7 +9,7 @@
 Authors:
 - Euna Ao
 - Alice Le
-- Issac So
+- Isaac So
 - Mandy Yu
 
 ### Project Introduction
