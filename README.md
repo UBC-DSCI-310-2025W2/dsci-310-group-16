@@ -9,7 +9,7 @@
 Authors:
 - Euna Ao
 - Alice Le
-- Issac So
+- Isaac So
 - Mandy Yu
 
 ### Project Introduction
@@ -26,11 +26,14 @@ Our project uses a Docker container that is configured to run R and RStudio, ver
 4) Navigate to the project root. It should look something like [*system path...*]/dsci-310-group-16
 5) Run the command  `docker-compose up`. It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*
 6) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
-> username: rstudio
+> username: rstudio  
 > password: group16
 7) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
 8) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`
 
+##### Creating Docker container from Dockerfile
+
+##### Creating Docker container from Dockerhub 
 ### Dependencies 
 
 
