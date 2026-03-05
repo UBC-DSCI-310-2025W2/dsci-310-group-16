@@ -1,0 +1,54 @@
+---
+title: "galton-height-regression"
+output: html_document
+---
+
+# Title
+
+## Summary
+
+## Introduction
+
+## Methods
+
+To investigate the relationship between parental height and child height, we conducted a simple linear regression analysis using the Galton height dataset. The dataset includes measurements of midparent height (the average height of both parents) and the height of their child.
+
+A scatter plot was created using `ggplot` to visualize the relationship between midparent height and child height. Each point represents one parent–child pair. The fitted regression line and confidence interval were added to the scatter plot using `geom_smooth(method = "lm")`.
+
+A linear regression model was fitted with child height as the response variable and midparent height as the predictor variable. This model estimates how much child height is expected to change with each one-inch increase in midparent height. Model coefficients and statistical significance were evaluated using the `summary()` function in R.
+
+## Analysis
+
+```{r}
+library(tidyverse)
+
+# Load data
+galton_heights <- read_csv("data/processed/galton_clean.csv")
+
+# Scatterplot with regression line
+ggplot(galton_heights, aes(x = midparent_height, y = child_height)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    x = "Midparent Height (inches)",
+    y = "Child Height (inches)",
+    title = "Relationship Between Parent and Child Height")
+
+# Fit linear regression model
+model <- lm(child_height ~ midparent_height, data = galton_heights)
+
+# Model summary
+summary(model)
+```
+
+## Results
+
+The scatter plot shows a positive relationship between midparent height and child height. In general, children with taller parents tend to have taller heights.
+
+The linear regression analysis indicated that midparent height was a significant predictor of child height (β = 0.64, p \< 0.001). This suggests that for every one-inch increase in midparent height, the child's height is predicted to increase by approximately 0.64 inches.
+
+The overall regression model was statistically significant (p \< 0.001), explaining 10.3% of the variance in child height (R² = 0.103).
+
+## Discussion
+
+## References
