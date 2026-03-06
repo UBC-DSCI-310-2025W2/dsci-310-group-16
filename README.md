@@ -18,7 +18,7 @@ Our project uses a Docker container that is configured to run R and RStudio, ver
 
 ##### Using `docker-compose up`
 
-`docker-compose up` will streamline the process of building and launching the Docker container, making it ideal for making edits and changes to the project. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
+We recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
 
 1) Download Docker Desktop [here](https://docs.docker.com/desktop/setup/install/windows-install/). Instructions for download can be found on the webpage
 2) Have Docker Desktop actively running
@@ -32,6 +32,22 @@ Our project uses a Docker container that is configured to run R and RStudio, ver
 8) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`
 
 ##### Creating Docker container from Dockerfile
+
+While we recommend using  `docker-compose`, the Docker container can also be built directly from the Dockerfile.
+
+1) Navigate to the project repository root
+2) Using bash, run the command `docker build --tag dsci-310-group-16 .`. It will take a moment for the process to complete.
+3) After the process has complete, run the following command in bash:
+
+```bash
+    docker run \
+    --rm \
+    -p 8787:8787 \
+    -e PASSWORD="group16" \
+    dsci-310-group-16`
+```
+
+4) I
 
 ##### Creating Docker container from Dockerhub 
 ### Dependencies 
