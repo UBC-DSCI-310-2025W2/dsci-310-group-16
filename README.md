@@ -22,10 +22,19 @@ We recommend using `docker-compose up` to launch and build the Docker container.
 
 1) Download Docker Desktop [here](https://docs.docker.com/desktop/setup/install/windows-install/). Instructions for download can be found on the webpage
 2) Have Docker Desktop actively running
-3) To create a copy of this project, clone this project repo to your local computer with the command `git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
-4) Navigate to the project root. It should look something like [*system path...*]/dsci-310-group-16
-5) Run the command  `docker-compose up`. It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*
-6) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+3) To create a copy of this project, clone this project repo to your local computer with the command
+```bash
+git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
+```
+
+6) Navigate to the project root. It should look something like `[*system path...*]/dsci-310-group-16`
+7) Run the command
+```bash
+docker-compose up
+```
+ It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*
+ 
+9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
 7) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
@@ -46,10 +55,43 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     -e PASSWORD="group16" \
     dsci-310-group-16`
 ```
+4) 9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+> username: rstudio  
+> password: group16
+5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
+6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+```bash
+docker system prune
+```
 
-4) I
 
 ##### Creating Docker container from Dockerhub 
+
+The Docker container can also be built from pulling the Docker image off Dockerhub. The image can be found on Dockerhub [here](https://hub.docker.com/r/eao939/dsci310-group16-docker).
+
+1) Navigate to the project repository root
+2) In bash, run the following command to pull the Docker image from Dockerhub
+```bash
+docker pull eao939/dsci310-group16-docker
+```
+3) 3) After the process has complete, run the following command in bash:
+
+```bash
+    docker run \
+    --rm \
+    -p 8787:8787 \
+    -e PASSWORD="group16" \
+    dsci-310-group-16`
+```
+4) 9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+> username: rstudio  
+> password: group16
+5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
+6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+```bash
+docker system prune
+```
+
 ### Dependencies 
 
 
