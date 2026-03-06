@@ -3,11 +3,13 @@ title: "galton-height-regression"
 output: html_document
 ---
 
-# Title
+# Predicting Child Height from Parental Height: A Linear Regression Analysis of the Galton Dataset
 
 ## Summary
+Height is known to have a strong genetic component, and parental height is often used as a predictor of child height. In this analysis, we examined the relationship between midparent height (the average height of both parents) and child height using the Galton height dataset. A simple linear regression model was fitted to evaluate how well midparent height predicts child height. The results indicated a significant positive relationship between the two variables, with midparent height explaining approximately 10.3% of the variance in child height. These findings suggest that while parental height is an important factor, other genetic and environmental factors also contribute to a child's height.
 
 ## Introduction
+Human height is influenced by a combination of genetic and environmental factors, but parental height is often considered a strong predictor of a child's height. Understanding how strongly parental traits influence offspring characteristics has long been a topic of interest in biological and statistical research. The Galton height dataset, collected by Sir Francis Galton in the late 19th centurycontains measurements of parents’ heights and the heights of their children. The dataset includes a variable called midparent height, which represents the average height of both parents, and allow us to study how parentall height relates to the height of their child. In this analysis, we aim to answer the question: **Can a child’s height be predicted based on their parents’ heights?** To address this question, we use a simple linear regression model to examine the relationship between midparent height and child height. By analyzing this relationship, we can better understand how parental height contributes to variation in child height.
 
 ## Methods
 
