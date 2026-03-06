@@ -55,7 +55,7 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     -e PASSWORD="group16" \
     dsci-310-group-16`
 ```
-4) 9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
 5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
@@ -74,7 +74,7 @@ The Docker container can also be built from pulling the Docker image off Dockerh
 ```bash
 docker pull eao939/dsci310-group16-docker
 ```
-3) 3) After the process has complete, run the following command in bash:
+3) After the process has complete, run the following command in bash:
 
 ```bash
     docker run \
@@ -83,7 +83,7 @@ docker pull eao939/dsci310-group16-docker
     -e PASSWORD="group16" \
     dsci-310-group-16`
 ```
-4) 9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
 5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
