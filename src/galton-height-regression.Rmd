@@ -1,5 +1,5 @@
 ---
-title: "galton-height-regression"
+title: "Galton Height Regression"
 output: html_document
 ---
 
@@ -176,5 +176,36 @@ Graph 1 shows the relationship between midparent height and child height, with s
 
 ## Discussion
 
+We found that midparent height (i.e., weighted average between father's height (weight = 1) and mother's height (weight = 1.08)) had a positive relationship with their children's height. Gender also was a strong predictor of height, as male children were predicted to be approximately 5.21 inches taller than their female equivalents. Both variables were very statistically significant, with p-values less than 0.01. 
+
+The results are not surprising and are rather expected. Height is well recognized to have strong genetic components, and is largely hereditary and passed from parents to offspring. For example, the Tanner method (Tanner et al., 1970) estimates offspring height by averaging the adjusted height of the parents. 
+
+Our results align with existing research that examines the relationship between parental height and offspring height, such as Galton's original analysis in 1886. These findings have clear applications in healthcare and early disease detection. Being able to predict offspring height from parent height will allow healthcare providers to estimate expected heights for offspring, which can act as a baseline to gauge healthy growth and development. 
+
+##### Limitations
+
+However, further research has recognized that height is also influenced by environmental factors, such as socio-economic status (Carlos Bozzoli et al., 2009) and the education level received by the parents (Jelenkovic et al., 2020). As our dataset only contains data regarding the parents' height, offspring height, and offspring gender, our model fails to capture other explanatory variables that are influential in determining offspring height. 
+
+Additionally, our model used multivariate regression as our primary supervised learning technique, which assumes linearity in the data. While it produced reasonable results, we have not tried other non-linear models, which may produce better results and capture non-linear patterns in our data. 
+
+The data itself may also contain bias and is non-representative of the global population. As the data was collected before 1886, it likely only contained data about English families and would not be an accurate representation of other demographics nor reflect modern improvements in dietary patterns, lifestyle, and societal norms. 
+
+Lastly, our dataset is relatively small with only 934 children. A larger dataset would allow for more sophisticated machine learning techniques such as larger train/test splits, cross-validation, and hyperparameter tuning. 
+
+##### Future Questions
+
+Future areas to explore include re-examining the role of parental height and gender in predicting offspring height but with data collected recently, such as post 2000s across a global population. The role of birth order on height (i.e., first-born, second-born, etc.) and its interaction with gender and parents' height variables could also give insights into how family dynamics influence offspring height. 
+
+
+
+
+
 ## References
+
+Carlos Bozzoli, Angus Deaton, & Climent Quintana-Domeque. (2009). Adult Height and Childhood Disease. Demography, 46(4), 647–669. https://doi.org/10.1353/dem.0.0079
+
 Galton, F. (1886). Regression Towards Mediocrity in Hereditary Stature **Journal of the Anthropological Institute**, 15, 246-263
+
+Jelenkovic, A., Sund, R., Yokoyama, Y., Latvala, A., Sugawara, M., Tanaka, M., Matsumoto, S., Freitas, D. L., Maia, J. A., Knafo-Noam, A., Mankuta, D., Abramson, L., Ji, F., Ning, F., Pang, Z., Rebato, E., Saudino, K. J., Cutler, T. L., Hopper, J. L., & Ullemar, V. (2020). Genetic and environmental influences on human height from infancy through adulthood at different levels of parental education. Scientific Reports, 10(1), 7974. https://doi.org/10.1038/s41598-020-64883-8
+
+Tanner, J. M., Goldstein, H., & Whitehouse, R. H. (1970). Standards for Children’s Height at Ages 2-9 Years Allowing for Height of Parents. Archives of Disease in Childhood, 45(244), 755–762. https://doi.org/10.1136/adc.45.244.755
