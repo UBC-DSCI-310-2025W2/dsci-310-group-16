@@ -1,10 +1,4 @@
-# ProjectTitle
-
----
-> **instructions - delete later**
-> In the main README.md file for this project you should include: - the project title - the list of contributors/authors - a short summary of the project (view from 10,000 feet) - how to run your data analysis - a list of the dependencies needed to run your analysis - the names of the licenses contained in LICENSE.md
-
----
+# Predicting Child Height from Parental Height: A Linear Regression Analysis of the Galton Height Dataset
 
 Authors:
 - Euna Ao
@@ -14,7 +8,10 @@ Authors:
 
 ### Project Introduction
 
-Our project uses a Docker container that is configured to run R and RStudio, version 4.4.2. Provided are the instructions for reproducing the environment. 
+Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
+
+Our project uses a Docker container that is configured to run R and RStudio (version 4.4.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
+
 
 ##### Using `docker-compose up`
 
@@ -81,7 +78,7 @@ docker pull eao939/dsci310-group16-docker
     --rm \
     -p 8787:8787 \
     -e PASSWORD="group16" \
-    dsci-310-group-16`
+    eao939/dsci310-group16-docker`
 ```
 4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
@@ -93,8 +90,13 @@ docker system prune
 ```
 
 ### Dependencies 
-
-
+tidyverse
+tidymodels
+janitor
+HistData
+rmarkdown
+IRkernel
+renv
 
 ### License 
 
