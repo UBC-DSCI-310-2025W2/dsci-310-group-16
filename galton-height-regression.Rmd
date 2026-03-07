@@ -11,43 +11,88 @@ output: html_document
 
 ## Methods
 
-To investigate the relationship between parental height and child height, we conducted a simple linear regression analysis using the Galton height dataset. The dataset includes measurements of midparent height (the average height of both parents) and the height of their child.
+To investigate the relationship between parental height and child height, we conducted a mutiple linear regression analysis using the Galton height dataset. The dataset was randomly split into training (80%) and testing (20%) sets. The training dataset was used to fit the regression model, while the testing dataset was used to evaluate the model's predictive performance.
 
-A scatter plot was created using `ggplot` to visualize the relationship between midparent height and child height. Each point represents one parent–child pair. The fitted regression line and confidence interval were added to the scatter plot using `geom_smooth(method = "lm")`.
-
-A linear regression model was fitted with child height as the response variable and midparent height as the predictor variable. This model estimates how much child height is expected to change with each one-inch increase in midparent height. Model coefficients and statistical significance were evaluated using the `summary()` function in R.
+A multiple linear regression model was fitted with child height as the response variable, and the midparent height (the average height of the mother and father) and child gender as predictor variables.
 
 ## Analysis
 
 ```{r}
 library(tidyverse)
+library(tidymodels)
+
+set.seed(123)
 
 # Load data
 galton_heights <- read_csv("data/processed/galton_clean.csv")
 
+# Split the data into training (80%) and testing (20%) sets
+galton_split <- initial_split(galton_heights, prop = 0.8)
+
+galton_train <- training(galton_split)
+galton_test  <- testing(galton_split)
+
+# Specify the linear regression model
+lm_spec <- linear_reg() |>
+  set_engine("lm") |>
+  set_mode("regression")
+
+# Define the model formula 
+lm_recipe <- recipe(
+  child_height ~ midparent_height + gender,
+  data = galton_train)
+
+# Build workflow and fit the model
+lm_fit <- workflow() |>
+  add_recipe(lm_recipe) |>
+  add_model(lm_spec) |>
+  fit(data = galton_train)
+
+# View model summary
+lm_fit
+
+# Extract the regression coefficients
+coeffs <- lm_fit |>
+             extract_fit_parsnip() |>
+             tidy()
+
+# View coefficients
+coeffs
+
+# Predict on the test data and evaluate model performance
+lm_test_results <- lm_fit |>
+  predict(galton_test) |>
+  bind_cols(galton_test) |>
+  metrics(truth = child_height, estimate = .pred)
+
+# View test results
+lm_test_results
+
 # Scatterplot with regression line
-ggplot(galton_heights, aes(x = midparent_height, y = child_height)) +
+ggplot(galton_heights, aes(x = midparent_height, y = child_height, color = gender)) +
   geom_point(alpha = 0.4) +
   geom_smooth(method = "lm", se = TRUE) +
   labs(
     x = "Midparent Height (inches)",
     y = "Child Height (inches)",
-    title = "Relationship Between Parent and Child Height")
-
-# Fit linear regression model
-model <- lm(child_height ~ midparent_height, data = galton_heights)
-
-# Model summary
-summary(model)
+    title = "Graph 1. Relationship Between Midparent Height and Child Height")
 ```
 
 ## Results
 
-The scatter plot shows a positive relationship between midparent height and child height. In general, children with taller parents tend to have taller heights.
+The fitted regression model produced the following equation:
 
-The linear regression analysis indicated that midparent height was a significant predictor of child height (β = 0.64, p \< 0.001). This suggests that for every one-inch increase in midparent height, the child's height is predicted to increase by approximately 0.64 inches.
+$$
+\text{Child Height} = 16.14 + 0.693(\text{Midparent Height}) + 5.21(\text{Male})
+$$ 
 
-The overall regression model was statistically significant (p \< 0.001), explaining 10.3% of the variance in child height (R² = 0.103).
+The results indicate that midparent height is a significant predictor of child height (β = 0.693, p \< 0.001). For every one inch increase in midparent height, the predicted child height increases by approximately 0.69 inches.
+
+Child gender was also a significant predictor (β = 5.21, p \< 0.001). Male children were predicted to be approximately 5.21 inches taller than female children on average, when holding the midparent height constant.
+
+The model achieved a root mean squared error (RMSE) of 2.28 inches and a mean absolute error (MAE) of 1.76 inches, indicating that predictions were typically within approximately 2 inches of the true child height. The model explained 61.6% of the variation in child height (R² = 0.616).
+
+Graph 1 shows the relationship between midparent height and child height, with separate regression lines for male and female children. The positive slope for both lines indicates that taller parents tend to have taller children. The colour separation between male and female points in the scatterplot reflects the gender difference, with male children generally having greater predicted heights than female children at the same midparent height.
 
 ## Discussion
 
