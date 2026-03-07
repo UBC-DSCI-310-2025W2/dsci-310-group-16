@@ -8,7 +8,7 @@ Authors:
 
 ### Project Introduction
 
-Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
+Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset (Galton, 1886) with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
 
 Our project uses a Docker container that is configured to run R and RStudio (version 4.4.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
@@ -90,14 +90,25 @@ docker system prune
 ```
 
 ### Dependencies 
-tidyverse
-tidymodels
-janitor
-HistData
-rmarkdown
-IRkernel
-renv
+- tidyverse
+- tidymodels
+- janitor
+- HistData
+- rmarkdown
+- IRkernel
+- renv
 
 ### License 
 
 MIT License 
+
+
+### References
+
+Carlos Bozzoli, Angus Deaton, & Climent Quintana-Domeque. (2009). Adult Height and Childhood Disease. Demography, 46(4), 647–669. https://doi.org/10.1353/dem.0.0079  
+
+Galton, F. (1886). Regression Towards Mediocrity in Hereditary Stature **Journal of the Anthropological Institute**, 15, 246-263  
+
+Jelenkovic, A., Sund, R., Yokoyama, Y., Latvala, A., Sugawara, M., Tanaka, M., Matsumoto, S., Freitas, D. L., Maia, J. A., Knafo-Noam, A., Mankuta, D., Abramson, L., Ji, F., Ning, F., Pang, Z., Rebato, E., Saudino, K. J., Cutler, T. L., Hopper, J. L., & Ullemar, V. (2020). Genetic and environmental influences on human height from infancy through adulthood at different levels of parental education. Scientific Reports, 10(1), 7974. https://doi.org/10.1038/s41598-020-64883-8  
+
+Tanner, J. M., Goldstein, H., & Whitehouse, R. H. (1970). Standards for Children’s Height at Ages 2-9 Years Allowing for Height of Parents. Archives of Disease in Childhood, 45(244), 755–762. https://doi.org/10.1136/adc.45.244.755
