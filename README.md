@@ -56,9 +56,10 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
 4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
-5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks"
-6) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
-7) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
+6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks"
+7) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
+8) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
@@ -103,7 +104,7 @@ docker system prune
 
 ### License 
 
-MIT License 
+MIT License   
 CC BY-NC-ND 4.0
 
 
