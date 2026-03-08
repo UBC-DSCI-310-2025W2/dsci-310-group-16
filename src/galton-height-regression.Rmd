@@ -6,9 +6,11 @@ output: html_document
 # Predicting Child Height from Parental Height: A Linear Regression Analysis of the Galton Height Dataset
 
 ## Project Summary
+
 Height is known to have a strong genetic component, and parental height is often used as a predictor of child height. In this analysis, we examined the relationship between midparent height (the average height of both parents) and child height using the Galton height dataset. A multiple linear regression model was fitted to evaluate how well midparent height and child gender predict child height. The model was trained using 80% of the data and evaluated on the remaining 20% test set. The results indicated a significant positive relationship between the two variables, with midparent height explaining approximately 10.3% of the variance in child height. These findings suggest that while parental height is an important factor, other genetic and environmental factors also contribute to a child's height.
 
 ## Introduction
+
 Human height is influenced by a combination of genetic and environmental factors, but parental height is often considered a strong predictor of a child's height. Early statistical work by Francis Galton demonstrated that the average height of both parents, known as midparent height, provides a strong indicator of a child’s expected height (Galton, 1886). Galton also observed that children’s heights tend to regress toward the population average rather than exactly matching their parents, a phenomenon later known as regression toward the mean. The Galton height dataset, collected in the late 19th century, contains measurements of parents’ heights and the heights of their children. The dataset includes a variable called midparent height, which represents the average height of both parents, and allow us to study how parental height relates to the height of their child. In this analysis, we aim to answer the question: **Can a child’s height be predicted based on their parents’ heights?** To address this question, we build a multiple linear regression model to examine the relationship between midparent height and child height while also accounting for the child’s gender. By fitting the model on a training dataset and evaluating its performance on a testing dataset, we assess how well parental height and gender together predict child height. This analysis provides better understand how parental height contributes to variation in child height.
 
 ## Methods
@@ -41,8 +43,6 @@ GaltonFamilies <- galton_raw |>
   dplyr::mutate(gender = as.factor(gender))
 ```
 
-
-
 ## Exploratory Data Analysis
 
 ```{r}
@@ -50,15 +50,22 @@ head(GaltonFamilies)
 str(GaltonFamilies)
 summary(GaltonFamilies)
 ```
+
 The GaltonFamilies dataset contains information about the heights of children and their parents from a number of families. Each row in the dataset represents one child, and there are 934 observations with 8 variables in total. The dataset includes variables such as the height of the father, the height of the mother, the calculated midparent height, the child’s gender, and the child’s height.
 
 From the summary statistics, the average child height is about 66.7 inches, with heights ranging from 56 inches to 79 inches. The dataset also contains slightly more male children than female children. After checking for missing values, we found that there are no missing observations, meaning the dataset is complete and can be used directly for further analysis.
 
 ```{r}
-colSums(is.na(GaltonFamilies))
+missing_vals <- colSums(is.na(GaltonFamilies))
+
+knitr::kable(
+  as.data.frame(missing_vals),
+  col.names = c("Variable", "Missing Values"),
+  caption = "Table 1. Number of missing values for each variable in the GaltonFamilies dataset."
+)
 ```
 
-```{r}
+```{r fig.cap="Figure 1. Distribution of child height in the GaltonFamilies dataset."}
 
 ggplot(GaltonFamilies, aes(x = child_height)) +
   geom_histogram(bins = 30, fill = "steelblue", color = "black") +
@@ -68,9 +75,10 @@ ggplot(GaltonFamilies, aes(x = child_height)) +
     y = "Count"
   )
 ```
+
 The histogram shows that child heights are roughly normally distributed. Most children in the dataset have heights between about 60 and 72 inches, with the center of the distribution around 66–67 inches. There are fewer observations at the very short and very tall ends of the distribution. This pattern suggests that child height follows a fairly typical bell-shaped distribution, which is common for biological traits like height.
 
-```{r}
+```{r fig.cap="Figure 2. Relationship between midparent height and child height. Each point represents one child in the dataset."}
 ggplot(GaltonFamilies, aes(x = midparent_height, y = child_height)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "red") +
@@ -80,9 +88,10 @@ ggplot(GaltonFamilies, aes(x = midparent_height, y = child_height)) +
     y = "Child Height"
   )
 ```
+
 This scatterplot explores the relationship between a child’s height and the average height of their parents (midparent height). There is a clear positive trend, meaning that children with taller parents tend to be taller themselves. Although there is still variability in the data, the upward trend suggests that parental height is an important factor influencing a child's height. This relationship indicates that midparent height may be a useful predictor when building a model to estimate child height.
 
-```{r}
+```{r fig.cap="Figure 3. Distribution of child height by gender in the GaltonFamilies dataset."}
 ggplot(GaltonFamilies, aes(x = gender, y = child_height)) +
   geom_boxplot(fill = "lightblue") +
   labs(
@@ -94,7 +103,7 @@ ggplot(GaltonFamilies, aes(x = gender, y = child_height)) +
 
 The boxplot compares the distribution of child heights between males and females. We can see that male children tend to have a slightly higher median height than female children, although the distributions overlap considerably. Both groups also show a similar spread in heights. This suggests that while gender may play a role in determining height, it is likely only one of several factors influencing a child's height.
 
-```{r}
+```{r fig.cap="Figure 4. Relationship between mother’s height and father’s height in the dataset."}
 ggplot(GaltonFamilies, aes(x = mother, y = father)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "red") +
@@ -104,6 +113,7 @@ ggplot(GaltonFamilies, aes(x = mother, y = father)) +
     y = "Father Height"
   )
 ```
+
 This scatterplot shows the relationship between the heights of mothers and fathers in the dataset. There appears to be a slight upward trend, suggesting that taller fathers tend to have somewhat taller partners as well. However, the points are still fairly spread out, so the relationship is not very strong. Because the two variables are somewhat related, using both mother and father height as predictors in a regression model could introduce a small amount of multicollinearity, meaning the variables may contain overlapping information about parental height.
 
 ## Analysis
@@ -143,7 +153,10 @@ coeffs <- lm_fit |>
              tidy()
 
 # View coefficients
-coeffs
+knitr::kable(
+  coeffs,
+  caption = "Table 2. Estimated coefficients from the multiple linear regression model predicting child height."
+)
 ```
 
 ```{r}
@@ -154,8 +167,10 @@ lm_test_results <- lm_fit |>
   metrics(truth = child_height, estimate = .pred)
 
 # View test results
-lm_test_results
-
+knitr::kable(
+  lm_test_results,
+  caption = "Table 3. Test-set performance metrics for the multiple linear regression model."
+)
 ```
 
 ## Results
@@ -164,7 +179,7 @@ The fitted regression model produced the following equation:
 
 $$
 \text{Child Height} = 16.14 + 0.693(\text{Midparent Height}) + 5.21(\text{Male})
-$$ 
+$$
 
 The results indicate that midparent height is a significant predictor of child height (β = 0.693, p \< 0.001). For every one inch increase in midparent height, the predicted child height increases by approximately 0.69 inches.
 
@@ -176,36 +191,32 @@ Graph 1 shows the relationship between midparent height and child height, with s
 
 ## Discussion
 
-We found that midparent height (i.e., weighted average between father's height (weight = 1) and mother's height (weight = 1.08)) had a positive relationship with their children's height. Gender also was a strong predictor of height, as male children were predicted to be approximately 5.21 inches taller than their female equivalents. Both variables were very statistically significant, with p-values less than 0.01. 
+We found that midparent height (i.e., weighted average between father's height (weight = 1) and mother's height (weight = 1.08)) had a positive relationship with their children's height. Gender also was a strong predictor of height, as male children were predicted to be approximately 5.21 inches taller than their female equivalents. Both variables were very statistically significant, with p-values less than 0.01.
 
-The results are not surprising and are rather expected. Height is well recognized to have strong genetic components, and is largely hereditary and passed from parents to offspring. For example, the Tanner method (Tanner et al., 1970) estimates offspring height by averaging the adjusted height of the parents. 
+The results are not surprising and are rather expected. Height is well recognized to have strong genetic components, and is largely hereditary and passed from parents to offspring. For example, the Tanner method (Tanner et al., 1970) estimates offspring height by averaging the adjusted height of the parents.
 
-Our results align with existing research that examines the relationship between parental height and offspring height, such as Galton's original analysis in 1886. These findings have clear applications in healthcare and early disease detection. Being able to predict offspring height from parent height will allow healthcare providers to estimate expected heights for offspring, which can act as a baseline to gauge healthy growth and development. 
+Our results align with existing research that examines the relationship between parental height and offspring height, such as Galton's original analysis in 1886. These findings have clear applications in healthcare and early disease detection. Being able to predict offspring height from parent height will allow healthcare providers to estimate expected heights for offspring, which can act as a baseline to gauge healthy growth and development.
 
 ##### Limitations
 
-However, further research has recognized that height is also influenced by environmental factors, such as socio-economic status (Carlos Bozzoli et al., 2009) and the education level received by the parents (Jelenkovic et al., 2020). As our dataset only contains data regarding the parents' height, offspring height, and offspring gender, our model fails to capture other explanatory variables that are influential in determining offspring height. 
+However, further research has recognized that height is also influenced by environmental factors, such as socio-economic status (Carlos Bozzoli et al., 2009) and the education level received by the parents (Jelenkovic et al., 2020). As our dataset only contains data regarding the parents' height, offspring height, and offspring gender, our model fails to capture other explanatory variables that are influential in determining offspring height.
 
-Additionally, our model used multivariate regression as our primary supervised learning technique, which assumes linearity in the data. While it produced reasonable results, we have not tried other non-linear models, which may produce better results and capture non-linear patterns in our data. 
+Additionally, our model used multivariate regression as our primary supervised learning technique, which assumes linearity in the data. While it produced reasonable results, we have not tried other non-linear models, which may produce better results and capture non-linear patterns in our data.
 
-The data itself may also contain bias and is non-representative of the global population. As the data was collected before 1886, it likely only contained data about English families and would not be an accurate representation of other demographics nor reflect modern improvements in dietary patterns, lifestyle, and societal norms. 
+The data itself may also contain bias and is non-representative of the global population. As the data was collected before 1886, it likely only contained data about English families and would not be an accurate representation of other demographics nor reflect modern improvements in dietary patterns, lifestyle, and societal norms.
 
-Lastly, our dataset is relatively small with only 934 children. A larger dataset would allow for more sophisticated machine learning techniques such as larger train/test splits, cross-validation, and hyperparameter tuning. 
+Lastly, our dataset is relatively small with only 934 children. A larger dataset would allow for more sophisticated machine learning techniques such as larger train/test splits, cross-validation, and hyperparameter tuning.
 
 ##### Future Questions
 
-Future areas to explore include re-examining the role of parental height and gender in predicting offspring height but with data collected recently, such as post 2000s across a global population. The role of birth order on height (i.e., first-born, second-born, etc.) and its interaction with gender and parents' height variables could also give insights into how family dynamics influence offspring height. 
-
-
-
-
+Future areas to explore include re-examining the role of parental height and gender in predicting offspring height but with data collected recently, such as post 2000s across a global population. The role of birth order on height (i.e., first-born, second-born, etc.) and its interaction with gender and parents' height variables could also give insights into how family dynamics influence offspring height.
 
 ## References
 
-Carlos Bozzoli, Angus Deaton, & Climent Quintana-Domeque. (2009). Adult Height and Childhood Disease. Demography, 46(4), 647–669. https://doi.org/10.1353/dem.0.0079
+Carlos Bozzoli, Angus Deaton, & Climent Quintana-Domeque. (2009). Adult Height and Childhood Disease. Demography, 46(4), 647–669. <https://doi.org/10.1353/dem.0.0079>
 
 Galton, F. (1886). Regression Towards Mediocrity in Hereditary Stature **Journal of the Anthropological Institute**, 15, 246-263
 
-Jelenkovic, A., Sund, R., Yokoyama, Y., Latvala, A., Sugawara, M., Tanaka, M., Matsumoto, S., Freitas, D. L., Maia, J. A., Knafo-Noam, A., Mankuta, D., Abramson, L., Ji, F., Ning, F., Pang, Z., Rebato, E., Saudino, K. J., Cutler, T. L., Hopper, J. L., & Ullemar, V. (2020). Genetic and environmental influences on human height from infancy through adulthood at different levels of parental education. Scientific Reports, 10(1), 7974. https://doi.org/10.1038/s41598-020-64883-8
+Jelenkovic, A., Sund, R., Yokoyama, Y., Latvala, A., Sugawara, M., Tanaka, M., Matsumoto, S., Freitas, D. L., Maia, J. A., Knafo-Noam, A., Mankuta, D., Abramson, L., Ji, F., Ning, F., Pang, Z., Rebato, E., Saudino, K. J., Cutler, T. L., Hopper, J. L., & Ullemar, V. (2020). Genetic and environmental influences on human height from infancy through adulthood at different levels of parental education. Scientific Reports, 10(1), 7974. <https://doi.org/10.1038/s41598-020-64883-8>
 
-Tanner, J. M., Goldstein, H., & Whitehouse, R. H. (1970). Standards for Children’s Height at Ages 2-9 Years Allowing for Height of Parents. Archives of Disease in Childhood, 45(244), 755–762. https://doi.org/10.1136/adc.45.244.755
+Tanner, J. M., Goldstein, H., & Whitehouse, R. H. (1970). Standards for Children’s Height at Ages 2-9 Years Allowing for Height of Parents. Archives of Disease in Childhood, 45(244), 755–762. <https://doi.org/10.1136/adc.45.244.755>
