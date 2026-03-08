@@ -56,7 +56,13 @@ The GaltonFamilies dataset contains information about the heights of children an
 From the summary statistics, the average child height is about 66.7 inches, with heights ranging from 56 inches to 79 inches. The dataset also contains slightly more male children than female children. After checking for missing values, we found that there are no missing observations, meaning the dataset is complete and can be used directly for further analysis.
 
 ```{r}
-colSums(is.na(GaltonFamilies))
+missing_vals <- colSums(is.na(GaltonFamilies))
+
+knitr::kable(
+  as.data.frame(missing_vals),
+  col.names = c("Variable", "Missing Values"),
+  caption = "Table 1. Number of missing values for each variable in the GaltonFamilies dataset."
+)
 ```
 
 ```{r fig.cap="Figure 1. Distribution of child height in the GaltonFamilies dataset."}
@@ -147,7 +153,10 @@ coeffs <- lm_fit |>
              tidy()
 
 # View coefficients
-coeffs
+knitr::kable(
+  coeffs,
+  caption = "Table 2. Estimated coefficients from the multiple linear regression model predicting child height."
+)
 ```
 
 ```{r}
@@ -158,8 +167,10 @@ lm_test_results <- lm_fit |>
   metrics(truth = child_height, estimate = .pred)
 
 # View test results
-lm_test_results
-
+knitr::kable(
+  lm_test_results,
+  caption = "Table 3. Test-set performance metrics for the multiple linear regression model."
+)
 ```
 
 ## Results
