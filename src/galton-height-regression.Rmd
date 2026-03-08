@@ -34,13 +34,9 @@ set.seed(123)
 ```{r}
 #reading in the data
 
-url <- "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/GaltonFamilies.csv"
-galton_raw <- readr::read_csv(url, show_col_types = FALSE)
+library(tidyverse)
 
-GaltonFamilies <- galton_raw |>
-  dplyr::select(-any_of(c("rownames", "X"))) |>
-  janitor::clean_names() |>
-  dplyr::mutate(gender = as.factor(gender))
+GaltonFamilies <- read_csv("../data/processed/galton_clean.csv", show_col_types = FALSE)
 ```
 
 ## Exploratory Data Analysis
