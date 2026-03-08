@@ -31,11 +31,12 @@ docker-compose up
 ```
  It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*
  
-9) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
+8) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
-7) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
-8) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`
+9) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
+10) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks"
+11) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`
 
 ##### Creating Docker container from Dockerfile
 
@@ -55,8 +56,9 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
 4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
-5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
-6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks"
+6) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
+7) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
@@ -83,8 +85,9 @@ docker pull eao939/dsci310-group16-docker
 4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
-5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
-6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks"
+7) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.
+8) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
