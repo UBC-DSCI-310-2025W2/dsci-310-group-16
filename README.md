@@ -101,6 +101,7 @@ docker system prune
 ### License 
 
 MIT License 
+CC BY-NC-ND 4.0
 
 
 ### References
