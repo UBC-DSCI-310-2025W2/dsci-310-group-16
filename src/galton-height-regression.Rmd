@@ -19,7 +19,7 @@ To investigate the relationship between parental height and child height, we con
 
 A multiple linear regression model was fitted with child height as the response variable, and the midparent height (the average height of the mother and father) and child gender as predictor variables.
 
-## Set-up and Reading in Data
+## Set-up and Data Preparation 
 
 ```{r}
 #importing packages and libraries 
@@ -32,7 +32,39 @@ set.seed(123)
 ```
 
 ```{r}
-#reading in the data
+#reading in the raw data
+
+url <- "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/GaltonFamilies.csv"
+galton_raw <- readr::read_csv(url, show_col_types = FALSE)
+
+
+
+```
+
+
+```{r}
+# renaming variables for clarity
+galton_clean <- galton_raw %>%
+  rename(
+    father_height = father,
+    mother_height = mother,
+    midparent_height = midparentHeight,
+    child_height = childHeight)
+
+# remove missing values
+galton_clean <- galton_clean %>%
+  drop_na()
+
+# save cleaned dataset
+write_csv(
+  galton_clean,
+  "../data/processed/galton_clean.csv")
+
+```
+
+
+```{r}
+#code to read in processed dataset
 
 library(tidyverse)
 
@@ -100,7 +132,7 @@ ggplot(GaltonFamilies, aes(x = gender, y = child_height)) +
 The boxplot compares the distribution of child heights between males and females. We can see that male children tend to have a slightly higher median height than female children, although the distributions overlap considerably. Both groups also show a similar spread in heights. This suggests that while gender may play a role in determining height, it is likely only one of several factors influencing a child's height.
 
 ```{r fig.cap="Figure 4. Relationship between mother’s height and father’s height in the dataset."}
-ggplot(GaltonFamilies, aes(x = mother, y = father)) +
+ggplot(GaltonFamilies, aes(x = mother_height, y = father_height)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "red") +
   labs(
