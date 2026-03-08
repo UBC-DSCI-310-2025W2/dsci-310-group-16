@@ -10,7 +10,7 @@ Authors:
 
 Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset (Galton, 1886) with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
 
-Our project uses a Docker container that is configured to run R and RStudio (version 4.4.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
+Our project uses a Docker container that is configured to run R and RStudio (version 4.5.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
 
 ##### Using `docker-compose up`
