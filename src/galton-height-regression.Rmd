@@ -32,13 +32,9 @@ set.seed(123)
 ```{r}
 #reading in the data
 
-url <- "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/HistData/GaltonFamilies.csv"
-galton_raw <- readr::read_csv(url, show_col_types = FALSE)
+library(tidyverse)
 
-GaltonFamilies <- galton_raw |>
-  dplyr::select(-any_of(c("rownames", "X"))) |>
-  janitor::clean_names() |>
-  dplyr::mutate(gender = as.factor(gender))
+GaltonFamilies <- read_csv("../data/processed/galton_clean.csv", show_col_types = FALSE)
 ```
 
 
@@ -95,7 +91,7 @@ ggplot(GaltonFamilies, aes(x = gender, y = child_height)) +
 The boxplot compares the distribution of child heights between males and females. We can see that male children tend to have a slightly higher median height than female children, although the distributions overlap considerably. Both groups also show a similar spread in heights. This suggests that while gender may play a role in determining height, it is likely only one of several factors influencing a child's height.
 
 ```{r}
-ggplot(GaltonFamilies, aes(x = mother, y = father)) +
+ggplot(GaltonFamilies, aes(x = mother_height, y = father_height)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", color = "red") +
   labs(
