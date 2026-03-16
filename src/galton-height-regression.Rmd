@@ -197,6 +197,17 @@ knitr::kable(
 )
 ```
 
+```{r fig.cap="Figure 5. Relationship Between Midparent Height and Child Height by Gender."}
+# Scatterplot with regression line
+ggplot(galton_train, aes(x = midparent_height, y = child_height, color = gender)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    x = "Midparent Height (inches)",
+    y = "Child Height (inches)",
+    title = "Midparent Height vs Child Height")
+```
+
 ## Results
 
 The fitted regression model produced the following equation:
