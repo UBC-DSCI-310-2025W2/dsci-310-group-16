@@ -95,13 +95,10 @@ docker system prune
 ```
 
 ### Dependencies 
-- tidyverse
-- tidymodels
-- janitor
-- HistData
-- rmarkdown
-- IRkernel
-- renv
+- tidyverse (2.0.0)
+- tidymodels (1.4.1)
+- rmarkdown (2.30)
+- renv (1.1.6)
 
 ### License 
 
