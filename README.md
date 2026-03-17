@@ -35,8 +35,16 @@ docker-compose up
 > username: rstudio  
 > password: group16
 7) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-8) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
-9) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`.  
+8) Ensure you are within the project/ folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
+9) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
+
+```bash
+renv::restore()
+```
+It will take a few moments for the environment to initialize and all the packages to load. 
+
+10) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
+11) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`.  
 
 ##### Creating Docker container from Dockerfile
 
@@ -56,10 +64,18 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
 4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
 > username: rstudio  
 > password: group16
-5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks".  
-7) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
-8) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
+6) Ensure you are within the project/folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
+7) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
+
+```bash
+renv::restore()
+```
+It will take a few moments for the environment to initialize and all the packages to load. 
+
+8) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
+9) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
+10) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
@@ -87,9 +103,17 @@ docker pull eao939/dsci310-group16-docker
 > username: rstudio  
 > password: group16
 5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-6) Navigate to project/src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks").  
-7) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
-8) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+6) Ensure you are within the project/folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
+7) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
+
+```bash
+renv::restore()
+```
+It will take a few moments for the environment to initialize and all the packages to load. 
+
+8) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
+9) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
+10) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
