@@ -104,58 +104,6 @@
       "RoxygenNote": "7.3.2",
       "Repository": "CRAN"
     },
-    "HistData": {
-      "Package": "HistData",
-      "Version": "1.0.0",
-      "Source": "Repository",
-      "Type": "Package",
-      "Title": "Data Sets from the History of Statistics and Data Visualization",
-      "Date": "2025-11-25",
-      "Authors@R": "c(person(given = \"Michael\", family = \"Friendly\",  role=c(\"aut\", \"cre\"),  comment = c(ORCID = \"0000-0002-3237-0941\"), email=\"friendly@yorku.ca\"), person(given = \"Stephane\", family = \"Dray\",  role=\"aut\",  comment = c(ORCID = \"0000-0003-0153-1105\"), email=\"stephane.dray@univ-lyon1.fr\"), person(given = \"Peter\", family = \"Li\",  role=\"aut\", email=\"lindbrook@gmail.com\", comment = c(ORCID = \"0000-0001-9602-9550\")), person(given = \"David\", family = \"Bellhouse\", role=\"aut\", email=\"bellhouse@stats.uwo.ca\"), person(given = \"Hadley\", family = \"Wickham\", role=\"ctb\", email=\"hadley@rstudio.com\"), person(given = \"James\", family = \"Hanley\", role=\"ctb\", email=\"james.hanley@mcgill.ca\"), person(given = \"Dennis\", family = \"Murphy\", role=\"ctb\", email = \"djmuser@gmail.com\"), person(given = \"Luiz\", family = \"Droubi\", role=\"ctb\", email=\"lfpdroubi@gmail.com\"), person(given = \"James\", family = \"Riley\", role=\"ctb\", email = \"jimr1603@gmail.com\"), person(given = \"Antoine\", family = \"de Falguerolles\", role=\"ctb\"), person(given = \"Monique\", family = \"Graf\", role=\"ctb\"), person(given = \"Neville\", family = \"Verlander\", role=\"ctb\", email=\"Neville.Verlander@phe.gov.uk\"), person(given = \"Brian\", family = \"Clair\", role=\"ctb\"), person(given = \"Jim\", family = \"Oeppen\", role=\"ctb\", email = \"joeppen@health.sdu.dk\"), person(given = \"Ivan\", family = \"Lokhov\", role=\"ctb\", email=\"ivan@datawrapper.de\"), person(given = \"John\", family = \"Russell\", role=\"ctb\", email=\"\") )",
-      "Maintainer": "Michael Friendly <friendly@yorku.ca>",
-      "Description": "The 'HistData' package provides a collection of small data sets that are interesting and important in the history of statistics and data visualization. The goal of the package is to make these available, both for instructional use and for historical research. Some of these present interesting challenges for graphics or analysis in R.",
-      "Depends": [
-        "R (>= 4.1.0)"
-      ],
-      "Suggests": [
-        "gtools",
-        "KernSmooth",
-        "maps",
-        "ggplot2",
-        "dplyr",
-        "scales",
-        "proto",
-        "grid",
-        "reshape",
-        "plyr",
-        "lattice",
-        "jpeg",
-        "car",
-        "gplots",
-        "sp",
-        "heplots",
-        "knitr",
-        "rmarkdown",
-        "effects",
-        "lubridate",
-        "gridExtra",
-        "vcd",
-        "MASS",
-        "forcats"
-      ],
-      "License": "GPL",
-      "LazyLoad": "yes",
-      "LazyData": "yes",
-      "VignetteBuilder": "knitr",
-      "Language": "en-US",
-      "RoxygenNote": "7.3.3",
-      "Encoding": "UTF-8",
-      "BugReports": "https://github.com/friendly/HistData/issues",
-      "URL": "https://friendly.github.io/HistData/",
-      "NeedsCompilation": "no",
-      "Author": "Michael Friendly [aut, cre] (ORCID: <https://orcid.org/0000-0002-3237-0941>), Stephane Dray [aut] (ORCID: <https://orcid.org/0000-0003-0153-1105>), Peter Li [aut] (ORCID: <https://orcid.org/0000-0001-9602-9550>), David Bellhouse [aut], Hadley Wickham [ctb], James Hanley [ctb], Dennis Murphy [ctb], Luiz Droubi [ctb], James Riley [ctb], Antoine de Falguerolles [ctb], Monique Graf [ctb], Neville Verlander [ctb], Brian Clair [ctb], Jim Oeppen [ctb], Ivan Lokhov [ctb], John Russell [ctb]",
-      "Repository": "CRAN"
-    },
     "KernSmooth": {
       "Package": "KernSmooth",
       "Version": "2.23-26",
@@ -839,7 +787,8 @@
       "NeedsCompilation": "no",
       "Author": "Jennifer Bryan [cre, aut], Hadley Wickham [ctb]",
       "Maintainer": "Jennifer Bryan <jenny@stat.ubc.ca>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "class": {
       "Package": "class",
@@ -1351,6 +1300,30 @@
       "NeedsCompilation": "yes",
       "Author": "Dirk Eddelbuettel [aut, cre] (ORCID: <https://orcid.org/0000-0001-6419-907X>), Antoine Lucas [ctb] (ORCID: <https://orcid.org/0000-0002-8059-9767>), Jarek Tuszynski [ctb], Henrik Bengtsson [ctb] (ORCID: <https://orcid.org/0000-0002-7579-5165>), Simon Urbanek [ctb] (ORCID: <https://orcid.org/0000-0003-2297-1732>), Mario Frasca [ctb], Bryan Lewis [ctb], Murray Stokely [ctb], Hannes Muehleisen [ctb] (ORCID: <https://orcid.org/0000-0001-8552-0029>), Duncan Murdoch [ctb], Jim Hester [ctb] (ORCID: <https://orcid.org/0000-0002-2739-7082>), Wush Wu [ctb] (ORCID: <https://orcid.org/0000-0001-5180-0567>), Qiang Kou [ctb] (ORCID: <https://orcid.org/0000-0001-6786-5453>), Thierry Onkelinx [ctb] (ORCID: <https://orcid.org/0000-0001-8804-4216>), Michel Lang [ctb] (ORCID: <https://orcid.org/0000-0001-9754-0393>), Viliam Simko [ctb], Kurt Hornik [ctb] (ORCID: <https://orcid.org/0000-0003-4198-9911>), Radford Neal [ctb] (ORCID: <https://orcid.org/0000-0002-2473-3407>), Kendon Bell [ctb] (ORCID: <https://orcid.org/0000-0002-9093-8312>), Matthew de Queljoe [ctb], Dmitry Selivanov [ctb] (ORCID: <https://orcid.org/0000-0003-0492-6647>), Ion Suruceanu [ctb] (ORCID: <https://orcid.org/0009-0005-6446-4909>), Bill Denney [ctb] (ORCID: <https://orcid.org/0000-0002-5759-428X>), Dirk Schumacher [ctb], András Svraka [ctb] (ORCID: <https://orcid.org/0009-0008-8480-1329>), Sergey Fedorov [ctb] (ORCID: <https://orcid.org/0000-0002-5970-7233>), Will Landau [ctb] (ORCID: <https://orcid.org/0000-0003-1878-3253>), Floris Vanderhaeghe [ctb] (ORCID: <https://orcid.org/0000-0002-6378-6229>), Kevin Tappe [ctb], Harris McGehee [ctb], Tim Mastny [ctb], Aaron Peikert [ctb] (ORCID: <https://orcid.org/0000-0001-7813-818X>), Mark van der Loo [ctb] (ORCID: <https://orcid.org/0000-0002-9807-4686>), Chris Muir [ctb] (ORCID: <https://orcid.org/0000-0003-2555-3878>), Moritz Beller [ctb] (ORCID: <https://orcid.org/0000-0003-4852-0526>), Sebastian Campbell [ctb] (ORCID: <https://orcid.org/0009-0000-5948-4503>), Winston Chang [ctb] (ORCID: <https://orcid.org/0000-0002-1576-2126>), Dean Attali [ctb] (ORCID: <https://orcid.org/0000-0002-5645-3493>), Michael Chirico [ctb] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Kevin Ushey [ctb] (ORCID: <https://orcid.org/0000-0003-2880-7407>), Carl Pearson [ctb] (ORCID: <https://orcid.org/0000-0003-0701-7860>)",
       "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
+      "Repository": "CRAN"
+    },
+    "docopt": {
+      "Package": "docopt",
+      "Version": "0.7.2",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Command-Line Interface Specification Language",
+      "Authors@R": "c( person(\"Edwin\", \"de Jonge\", email = \"edwindjonge@gmail.com\", role = c(\"aut\", \"cre\"),  comment=c(ORCID=\"0000-0002-6580-4718\")))",
+      "Maintainer": "Edwin de Jonge <edwindjonge@gmail.com>",
+      "Description": "Define a command-line interface by just giving it a description in the specific format.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/docopt/docopt.R",
+      "BugReports": "https://github.com/docopt/docopt.R/issues",
+      "Imports": [
+        "methods"
+      ],
+      "Suggests": [
+        "testthat"
+      ],
+      "RoxygenNote": "7.3.2",
+      "Encoding": "UTF-8",
+      "NeedsCompilation": "no",
+      "Author": "Edwin de Jonge [aut, cre] (<https://orcid.org/0000-0002-6580-4718>)",
       "Repository": "CRAN"
     },
     "dplyr": {
@@ -2425,7 +2398,8 @@
       "NeedsCompilation": "no",
       "Author": "Rich FitzJohn [aut, cre]",
       "Maintainer": "Rich FitzJohn <rich.fitzjohn@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "infer": {
       "Package": "infer",
@@ -4476,7 +4450,8 @@
       "NeedsCompilation": "no",
       "Author": "Simon Potter [aut, trl, cre], Simon Sapin [aut], Ian Bicking [aut]",
       "Maintainer": "Simon Potter <simon@sjp.co.nz>",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "sfd": {
       "Package": "sfd",
@@ -5378,7 +5353,8 @@
       "URL": "https://www.rforge.net/uuid",
       "BugReports": "https://github.com/s-u/uuid/issues",
       "NeedsCompilation": "yes",
-      "Repository": "CRAN"
+      "Repository": "RSPM",
+      "Encoding": "UTF-8"
     },
     "vctrs": {
       "Package": "vctrs",
