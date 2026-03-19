@@ -1,0 +1,112 @@
+---
+title: "Galton Heights Regression"
+author: "Group 16 - Euna Ao // Alice Le // Isaac So // Mandy Yu"
+date: 2026-03-21
+editor: visual 
+
+bibliography: references.bib
+
+execute:
+  echo: false
+
+format:
+  html:
+    toc: true
+---
+
+```{r}
+#packages needed for this quarto document
+#this cell will not appear when rendered
+
+library(readr)
+library(knitr)
+```
+
+# Predicting Child Height from Parental Height: A Linear Regression Analysis of the Galton Height Dataset
+
+## Project Summary
+
+Height is known to have a strong genetic component, and parental height is often used as a predictor of child height. In this analysis, we examined the relationship between midparent height (calculated as $(\text{father} + 1.08 \times \text{mother})/2$) and child height using the Galton height dataset. A multiple linear regression model was fitted to evaluate how well midparent height and child gender predict child height. The model was trained using [80%]{style="color:red;"} of the data and evaluated on the remaining [20%]{style="color:red;"} test set. The results indicated a significant positive relationship between the two variables, with midparent height explaining approximately [61.6%]{style="color:red;"} of the variance in child height. These findings suggest that while parental height is an important factor, other genetic and environmental factors also contribute to a child's height.
+
+## Introduction
+
+Human height is influenced by a combination of genetic and environmental factors, but parental height is often considered a strong predictor of a child's height. Early statistical work by Francis Galton demonstrated that the average height of both parents, known as midparent height, provides a strong indicator of a child’s expected height [@galton1886regression]. Galton also observed that children’s heights tend to regress toward the population average rather than exactly matching their parents, a phenomenon later known as regression toward the mean. The Galton height dataset, collected in the late 19th century, contains measurements of parents’ heights and the heights of their children. The dataset includes a variable called midparent height, which is calculated as $(\text{father} + 1.08 \times \text{mother})/2$, adjusting for the typical height difference between men and women. This allows us to study how parental height relates to the height of their child. In this analysis, we aim to answer the question: **Can a child’s height be predicted based on their parents’ heights?** To address this question, we build a multiple linear regression model to examine the relationship between midparent height and child height while also accounting for the child’s gender. By fitting the model on a training dataset and evaluating its performance on a testing dataset, we assess how well parental height and gender together predict child height. This analysis provides a better understanding of how parental height contributes to variation in child height.
+
+## Methods
+
+To investigate the relationship between parental height and child height, we conducted a mutiple linear regression analysis using the Galton height dataset. The dataset was randomly split into training (80%) and testing (20%) sets. The training dataset was used to fit the regression model, while the testing dataset was used to evaluate the model's predictive performance.
+
+A multiple linear regression model was fitted with child height as the response variable, and the midparent height and child gender as predictor variables.
+
+## Dataset and Exploratory Data Analysis
+
+The GaltonFamilies dataset contains information about the heights of children and their parents from a number of families. Each row in the dataset represents one child, and there are 934 observations with 8 variables in total. The dataset includes variables such as the height of the father, the height of the mother, the calculated midparent height, the child’s gender, and the child’s height.
+
+From the summary statistics, the average child height is about [66.7]{style="color:red;"} inches, with heights ranging from [56]{style="color:red;"} inches to [79]{style="color:red;"} inches. The dataset also contains slightly more male children than female children. After checking for missing values, we found that there are no missing observations (@tbl-missing-values), meaning the dataset is complete and can be used directly for further analysis.
+
+```{r}
+#| label: tbl-missing-values
+#| tbl-cap: "Number of missing values for each variable in the GaltonFamilies dataset."
+
+library(readr)
+library(knitr)
+
+# Read the CSV your EDA script created
+missing_df <- read_csv("../results/eda/eda_missing.csv", show_col_types = FALSE)
+
+# Output as a Markdown table
+kable(missing_df, format = "markdown")
+```
+
+![Distribution of child height in the GaltonFamilies dataset.](../results/eda/eda_hist-child-height.png){#fig-hist-child-height width="50%"}
+
+@fig-hist-child-height explores the relationship between a child’s height and the midparent height. There is a clear positive trend, meaning that children with taller parents tend to be taller themselves. Although there is still variability in the data, the upward trend suggests that parental height is an important factor influencing a child's height. This relationship indicates that midparent height may be a useful predictor when building a model to estimate child height.
+
+![Distribution of child height by gender in the GaltonFamilies dataset."](../results/eda/eda_boxplot-gender-height.png){#fig-boxplot-gender-height width="50%"} 
+
+
+The boxplot (@fig-boxplot-gender-height) compares the distribution of child heights between males and females. We can see that male children tend to have a slightly higher median height than female children, although the distributions overlap considerably. Both groups also show a similar spread in heights. This suggests that while gender may play a role in determining height, it is likely only one of several factors influencing a child's height.
+
+
+
+![Relationship between mother’s height and father’s height in the dataset."](../results/eda/eda_scatter-parent-child-height.png){#fig-scatter-parent-child-height width="50%"} 
+
+This scatterplot (@fig-scatter-parent-child-height) shows the relationship between the heights of mothers and fathers in the dataset. There appears to be a slight upward trend, suggesting that taller fathers tend to have somewhat taller partners as well. However, the points are still fairly spread out, so the relationship is not very strong. Because the two variables are somewhat related, using both mother and father height as predictors in a regression model could introduce a small amount of multicollinearity, meaning the variables may contain overlapping information about parental height.
+
+## Results
+
+
+```{r}
+#| label: tbl-coefficients
+#| tbl-cap: "Estimated coefficients from the multiple linear regression model predicting child height."
+
+
+coefficients_df <- read_csv("../results/regression/regression_coefficients.csv", show_col_types = FALSE)
+
+kable(coefficients_df, format = "markdown")
+```
+
+```{r}
+#| label: tbl-metrics
+#| tbl-cap: "Test-set performance metrics for the multiple linear regression model."
+
+
+lm_test_results <- read_csv("../results/regression/regression_metrics.csv", show_col_types = FALSE)
+
+kable(lm_test_results, format = "markdown")
+
+
+```
+
+
+
+
+
+![Relationship between mother’s height and father’s height in the dataset."](../results/regression/regression_model-plot.png){#fig-model-plot width="50%"} 
+
+
+
+## References
+
+::: {#refs}
+:::
