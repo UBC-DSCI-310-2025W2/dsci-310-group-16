@@ -13,12 +13,9 @@ Our project explores the relationship between parents' height and offspring gend
 Our project uses a Docker container that is configured to run R and RStudio (version 4.5.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
 
-### Instructions for Use
+##### Using `docker-compose up`
 
-
-##### Basic Set Up 
-
-Docker Desktop will be required to reproduce our computational environment and run the project. Below are the basic steps in installing Docker Desktop and cloning the project repo. 
+We recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
 
 1) Download Docker Desktop [here](https://docs.docker.com/desktop/setup/install/windows-install/). Instructions for download can be found on the webpage.  
 2) Have Docker Desktop actively running.  
@@ -26,36 +23,28 @@ Docker Desktop will be required to reproduce our computational environment and r
 ```bash
 git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
 ```
+
 4) Navigate to the project root. It should look something like `[*system path...*]/dsci-310-group-16`.    
-
-
-##### Using `docker-compose up`
-
-We recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
-
-1) Ensure you are at the project root. Run the command  
+5) Run the command  
 ```bash
 docker-compose up
 ```
  It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*  
  
-2) Open a computer browser and type in "localhost:8787". Enter in the following credentials:  
+6) Open a computer browser and type in "localhost:8787". Enter in the following credentials:  
 > username: rstudio  
 > password: group16
-3) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-4) Ensure you are within the project/ folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
-5) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
+7) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
+8) Ensure you are within the project/ folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
+9) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
 
 ```bash
 renv::restore()
 ```
 It will take a few moments for the environment to initialize and all the packages to load. 
 
-6) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
-7) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
-```
-docker-compose down
-```  
+10) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
+11) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. Once the process stops, enter the command  `docker-compose down`.  
 
 ##### Creating Docker container from Dockerfile
 
