@@ -12,6 +12,7 @@ execute:
 format:
   html:
     toc: true
+    self-contained: true
 ---
 
 ```{r}
