@@ -20,7 +20,7 @@ main <- function(input_file, out_prefix) {
   # Read data
   data <- read_csv(input_file, show_col_types = FALSE)
   
-  # Missing values table
+  # Table 1. Number of missing values for each variable
   missing_vals <- colSums(is.na(data))
   missing_df <- tibble(
     variable = names(missing_vals),
@@ -28,7 +28,7 @@ main <- function(input_file, out_prefix) {
   
   write_csv(missing_df, paste0(out_prefix, "_missing.csv"))
   
-  # Child height histogram
+  # Figure 1. Distribution of child height
   hist_child_height <- ggplot(data, aes(x = child_height)) +
     geom_histogram(bins = 30, fill = "steelblue", color = "black") +
     labs(
@@ -39,7 +39,7 @@ main <- function(input_file, out_prefix) {
   
   ggsave(paste0(out_prefix, "_hist-child-height.png"), hist_child_height)
   
-  # Child height vs midparent height scatter plot
+  # Figure 2. Relationship between midparent height and child height
   scatter_parent_child <- ggplot(data, aes(x = midparent_height, y = child_height)) +
     geom_point(alpha = 0.5) +
     geom_smooth(method = "lm", color = "red") +
@@ -51,7 +51,7 @@ main <- function(input_file, out_prefix) {
   
   ggsave(paste0(out_prefix, "_scatter-parent-child-height.png"), scatter_parent_child)
   
-  # Child height by gender boxplot
+  # Figure 3. Distribution of child height by gender 
   boxplot_gender_height <- ggplot(data, aes(x = gender, y = child_height)) +
     geom_boxplot(fill = "lightblue") +
     labs(
@@ -61,6 +61,17 @@ main <- function(input_file, out_prefix) {
     )
   
   ggsave(paste0(out_prefix, "_boxplot-gender-height.png"), boxplot_gender_height)
+  
+  # Figure 4. Relationship between mother’s height and father’s height 
+  scatter_mother_father <- ggplot(data, aes(x = mother_height, y = father_height)) +
+    geom_point(alpha = 0.5) +
+    geom_smooth(method = "lm", color = "red") +
+    labs(
+      title = "Mother vs Father Height",
+      x = "Mother Height",
+      y = "Father Height"
+    )
+  ggsave(paste0(out_prefix, "_scatter-mother-father-height.png"), scatter_mother_father)
 }
 
 main(opt$input, opt$out_prefix)
