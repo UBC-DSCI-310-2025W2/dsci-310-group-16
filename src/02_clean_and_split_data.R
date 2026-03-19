@@ -1,6 +1,7 @@
 library(docopt)
 library(readr)
 library(dplyr)
+library(tidyr)
 
 doc <- "
 Usage:
