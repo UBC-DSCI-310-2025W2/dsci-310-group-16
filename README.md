@@ -105,7 +105,7 @@ R (4.5.2) as specified in Docker container. Following packages are also defined 
 - knitr (1.51)
 - tinytex (0.58)
 
-Quarto (1.8.25)
+Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
 
 
