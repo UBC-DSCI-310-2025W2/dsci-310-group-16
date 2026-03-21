@@ -99,6 +99,9 @@ docker system prune
 - tidymodels (1.4.1)
 - rmarkdown (2.30)
 - renv (1.1.6)
+- docopt (0.7.2)
+- knitr (1.51)
+- tinytex (0.58)
 
 ### License 
 
