@@ -50,12 +50,15 @@ DATA_TARGETS := \
 
 # --- Reports: .qmd → .html / .pdf -------------------------------------------
 
+# Will render directly to reports/ folder where .qmd file is 
+
 $(RPT)/galton-heights-regression.html: $(RPT)/galton-heights-regression.qmd $(DATA_TARGETS)
-	$(QUARTO) render $< --to html --output-dir $(RPT)
+	$(QUARTO) render $< --to html 
 
 $(RPT)/galton-heights-regression.pdf: $(RPT)/galton-heights-regression.qmd $(DATA_TARGETS)
-	$(QUARTO) render $< --to pdf --output-dir $(RPT)
-
+	$(QUARTO) render $< --to pdf 
+	
+	
 RPT_TARGETS := \
 	$(RPT)/galton-heights-regression.html \
 	$(RPT)/galton-heights-regression.pdf
@@ -75,5 +78,5 @@ clean:
 	rm -f $(PROC)/*.csv
 	rm -rf $(EDA)
 	rm -rf $(REG)
-	rm -f $(RPT)/galton-heights-regression.html
-	rm -f $(RPT)/galton-heights-regression.pdf
+	rm -r $(RPT)/galton-heights-regression.html
+	rm -r $(RPT)/galton-heights-regression.pdf
