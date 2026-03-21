@@ -6,17 +6,17 @@ Authors:
 - Isaac So
 - Mandy Yu
 
-### Project Introduction
+## Project Introduction
 
 Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset (Galton, 1886) with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
 
 Our project uses a Docker container that is configured to run R and RStudio (version 4.5.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
 
-### Instructions for Use
+## Instructions for Use
 
 
-##### Basic Set Up 
+### Repository Set Up 
 
 Docker Desktop will be required to reproduce our computational environment and run the project. Below are the basic steps in installing Docker Desktop and cloning the project repo. 
 
@@ -29,7 +29,7 @@ git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
 4) Navigate to the project root. It should look something like `[*system path...*]/dsci-310-group-16`.    
 
 
-##### Using `docker-compose up`
+#### Using `docker-compose up`
 
 We recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
 
@@ -57,7 +57,7 @@ It will take a few moments for the environment to initialize and all the package
 docker-compose down
 ```  
 
-##### Creating Docker container from Dockerfile
+#### Creating Docker container from Dockerfile
 
 While we recommend using  `docker-compose`, the Docker container can also be built directly from the Dockerfile.  
 
@@ -92,7 +92,7 @@ docker system prune
 ```
 
 
-##### Creating Docker container from Dockerhub 
+#### Creating Docker container from Dockerhub 
 
 The Docker container can also be built from pulling the Docker image off Dockerhub. The image can be found on Dockerhub [here](https://hub.docker.com/r/eao939/dsci310-group16-docker).
 
@@ -129,7 +129,28 @@ It will take a few moments for the environment to initialize and all the package
 docker system prune
 ```
 
-### Dependencies 
+### Running the analysis with Make
+
+The project is set up with aMakefile to automate the workflow. This will allow the entire project to be run from start to finish, including but not limited to, reading in data, running the analysis, creating intermediate objects, rendering the report, and cleaning the repository. The steps are as follows:
+
+1. To run the entire analysis, type the following using Bash:
+   
+```bash
+make all
+```
+
+The intermediate outputs will automatically generate. Once the process is complete, the rendered reports can be found within the 'results/' folder.
+
+2. To clean the repository and remove intermediate outputs, type the following using Bash:
+
+```
+make clean
+```
+
+This will remove the intermediate outputs as well as the rendered reports. 
+
+
+## Dependencies 
 - tidyverse
 - tidymodels
 - janitor
@@ -138,13 +159,13 @@ docker system prune
 - IRkernel
 - renv
 
-### License 
+## License 
 
 MIT License   
 CC BY-NC-ND 4.0
 
 
-### References
+## References
 
 Carlos Bozzoli, Angus Deaton, & Climent Quintana-Domeque. (2009). Adult Height and Childhood Disease. Demography, 46(4), 647–669. https://doi.org/10.1353/dem.0.0079  
 
