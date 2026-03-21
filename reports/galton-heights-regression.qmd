@@ -13,6 +13,9 @@ format:
   html:
     toc: true
     self-contained: true
+  pdf:
+    toc: true
+    self-contained: true
 ---
 
 ```{r}
@@ -34,7 +37,7 @@ rsq <- round(as.numeric(lm_test_results[2, '.estimate']),3)
 
 ```
 
-Height is known to have a strong genetic component, and parental height is often used as a predictor of child height. In this analysis, we examined the relationship between midparent height (calculated as $(\text{father} + 1.08 \times \text{mother})/2$) and child height using the Galton height dataset. A multiple linear regression model was fitted to evaluate how well midparent height and child gender predict child height. The model was trained using [80%]{style="color:red;"} of the data and evaluated on the remaining [20%]{style="color:red;"} test set. The results indicated a significant positive relationship between the two variables, with midparent height explaining approximately `{r} rsq`of the variance in child height. These findings suggest that while parental height is an important factor, other genetic and environmental factors also contribute to a child's height.
+Height is known to have a strong genetic component, and parental height is often used as a predictor of child height. In this analysis, we examined the relationship between midparent height (calculated as $(\text{father} + 1.08 \times \text{mother})/2$) and child height using the Galton height dataset. A multiple linear regression model was fitted to evaluate how well midparent height and child gender predict child height. The model was trained using 80% of the data and evaluated on the remaining 20% test set. The results indicated a significant positive relationship between the two variables, with midparent height explaining approximately `{r} rsq`of the variance in child height. These findings suggest that while parental height is an important factor, other genetic and environmental factors also contribute to a child's height.
 
 ## Introduction
 
