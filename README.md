@@ -95,6 +95,8 @@ docker system prune
 ```
 
 ### Dependencies 
+
+R (4.5.2) as specified in Docker container. Following packages are also defined in renv.lock 
 - tidyverse (2.0.0)
 - tidymodels (1.4.1)
 - rmarkdown (2.30)
@@ -102,6 +104,10 @@ docker system prune
 - docopt (0.7.2)
 - knitr (1.51)
 - tinytex (0.58)
+
+Quarto (1.8.25)
+Pandoc (3.9) (if installed separately)
+
 
 ### License 
 
