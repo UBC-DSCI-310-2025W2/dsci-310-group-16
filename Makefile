@@ -55,14 +55,10 @@ DATA_TARGETS := \
 $(RPT)/galton-heights-regression.html: $(RPT)/galton-heights-regression.qmd $(DATA_TARGETS)
 	$(QUARTO) render $< --to html 
 
-$(RPT)/galton-heights-regression.pdf: $(RPT)/galton-heights-regression.qmd $(DATA_TARGETS)
-	$(QUARTO) render $< --to pdf 
-	
+
 	
 RPT_TARGETS := \
-	$(RPT)/galton-heights-regression.html \
-	$(RPT)/galton-heights-regression.pdf
-
+	$(RPT)/galton-heights-regression.html 
 # --- Top-level targets -------------------------------------------------------
 
 .PHONY: all data reports clean
@@ -78,4 +74,3 @@ clean:
 	rm -rf $(EDA)
 	rm -rf $(REG)
 	rm -r $(RPT)/galton-heights-regression.html
-	rm -r $(RPT)/galton-heights-regression.pdf
