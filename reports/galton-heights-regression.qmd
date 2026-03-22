@@ -13,9 +13,6 @@ format:
   html:
     toc: true
     self-contained: true
-  pdf:
-    toc: true
-    self-contained: true
 ---
 
 ```{r}
