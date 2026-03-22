@@ -8,7 +8,7 @@ Authors:
 
 ## Project Introduction
 
-Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset (Galton, 1886) with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (i.e. weight average of parents' height) and offpsring height, as well as a statistically significant interaction between offspring gender and offspring height. 
+Our project explores the relationship between parents' height and offspring gender in predicting offspring height. We performed a multi-variate regression with Sir Francis Galton's GaltonFamilies Height Dataset (Galton, 1886) with a 80/20 train/test split. Our results suggest a statistically significant relationship between midparent height (the weighted average of parents' height) and offspring height, as well as a statistically significant interaction between offspring gender and offspring height. 
 
 Our project uses a Docker container that is configured to run R and RStudio (version 4.5.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
@@ -16,7 +16,9 @@ Our project uses a Docker container that is configured to run R and RStudio (ver
 ## Instructions for Use
 
 
-### Repository Set Up 
+#### Using Docker-Compose 
+
+We strongly recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the section titled "Manually Building the Docker Image"
 
 Docker Desktop will be required to reproduce our computational environment and run the project. Below are the basic steps in installing Docker Desktop and cloning the project repo. 
 
@@ -27,37 +29,54 @@ Docker Desktop will be required to reproduce our computational environment and r
 git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
 ```
 4) Navigate to the project root. It should look something like `[*system path...*]/dsci-310-group-16`.    
-
-
-#### Using `docker-compose up`
-
-We recommend using `docker-compose up` to launch and build the Docker container. It uses a `docker-compose.yml` which configures, creates, and starts the Docker container in just one command. To manually build the image, refer below to the next section. 
-
-1) Ensure you are at the project root. Run the command  
+5) Ensure you are at the project root. Run the command  
 ```bash
 docker-compose up
 ```
  It will automatically pull the Docker image and build it according to specified configurations. Once the process is complete, you will see the end message of *analysis-env-1  | [services.d] done.*  
  
-2) Open a computer browser and type in "localhost:8787". Enter in the following credentials:  
+6) Open a computer browser and type in "localhost:8787". Enter in the following credentials:  
 > username: rstudio  
 > password: group16
-3) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-4) Ensure you are within the project/ folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
-5) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
+7) On the right-hand side, you will find the file navigation file. Within the `project/` folder, you will find the contents of the repository.  
+8) Ensure you are within the `project/ folder`. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
+9) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
 
 ```bash
 renv::restore()
 ```
-It will take a few moments for the environment to initialize and all the packages to load. 
+It will take a few moments for the environment to initialize and all the packages to load. Once the environment is initialized, proceed to running the analysis. 
 
-6) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
-7) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
+#### Running The Analysis with Make
+
+The project is set up with a Makefile to automate the workflow. This will allow the entire project to be run from start to finish, including but not limited to, reading in data, running the analysis, creating intermediate objects, rendering the report, and cleaning the repository. The steps are as follows:
+
+10) To run the entire analysis, type the following using Bash:
+   
+```bash
+make all
+```
+
+The intermediate outputs will automatically generate. Once the process is complete, the rendered reports can be found within the 'results/' folder.
+
+11) To clean the repository and remove intermediate outputs, type the following using Bash:
+
+```
+make clean
+```
+
+This will remove the intermediate outputs as well as the rendered reports. 
+
+#### Closing the Container 
+
+12) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
 ```
 docker-compose down
 ```  
 
-#### Creating Docker container from Dockerfile
+### Manually Building the Docker Image
+
+#### Building From the Dockerfile 
 
 While we recommend using  `docker-compose`, the Docker container can also be built directly from the Dockerfile.  
 
@@ -72,21 +91,9 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     -e PASSWORD="group16" \
     dsci-310-group-16`
 ```
-4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
-> username: rstudio  
-> password: group16
-5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.
-6) Ensure you are within the project/folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
-7) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
-
-```bash
-renv::restore()
-```
-It will take a few moments for the environment to initialize and all the packages to load. 
-
-8) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
-9) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
-10) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+5) To close the container, make sure to save your progress. The command `exit` in Bash will stop the container.  
+6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
@@ -110,45 +117,13 @@ docker pull eao939/dsci310-group16-docker
     -e PASSWORD="group16" \
     eao939/dsci310-group16-docker`
 ```
-4) Open a computer browser and type in "localhost:8787". Enter in the following credentials:
-> username: rstudio  
-> password: group16
-5) On the right-hand side, you will find the file navigation file. Within the project/ folder, you will find the contents of the repo.  
-6) Ensure you are within the project/folder. Navigate to the RProj file. It should be titled *dsci-310-group-16.Rproj`*. Click on the RProj file to open the project. 
-7) Once the project is open, restore the R environment to load the necessary packages needed to run the analysis. To do so, navigate to the console and enter:
 
-```bash
-renv::restore()
-```
-It will take a few moments for the environment to initialize and all the packages to load. 
-
-8) Once the environment is initialized, navigate to src/galton-height-regression.Rmd to find the analysis notebook. Run the entire notebook (ex. Click "Run All Chunks Below" or "Restart R and Run All Chunks")  
-9) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
-10) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
+4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
+6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
 docker system prune
 ```
-
-### Running the analysis with Make
-
-The project is set up with aMakefile to automate the workflow. This will allow the entire project to be run from start to finish, including but not limited to, reading in data, running the analysis, creating intermediate objects, rendering the report, and cleaning the repository. The steps are as follows:
-
-1. To run the entire analysis, type the following using Bash:
-   
-```bash
-make all
-```
-
-The intermediate outputs will automatically generate. Once the process is complete, the rendered reports can be found within the 'results/' folder.
-
-2. To clean the repository and remove intermediate outputs, type the following using Bash:
-
-```
-make clean
-```
-
-This will remove the intermediate outputs as well as the rendered reports. 
-
 
 ## Dependencies 
 - tidyverse
