@@ -7,7 +7,7 @@ Before contributing, please follow the environment setup instructions in the [RE
 
 If you are a core contributor with access to the main repository:
 
-1. Pull the latest changes from `main` before creating a new branch (`git pull origin main`).
+1. Pull the latest changes from `main` before creating a new branch (`git pull origin main`) to avoid merge conflicts.
 2. Create a new branch from `main` for your feature or bug fix.
 3. Make your changes and commit them with a descriptive commit message.
 4. Push your branch and open a pull request (PR) against `main`.
