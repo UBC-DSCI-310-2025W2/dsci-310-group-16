@@ -74,7 +74,6 @@ data: $(DATA_TARGETS)
 reports: $(RPT_TARGETS)
 
 clean:
-	rm -f $(RAW)/*.csv
 	rm -f $(PROC)/*.csv
 	rm -rf $(EDA)
 	rm -rf $(REG)
