@@ -14,7 +14,7 @@ library(tidymodels)
 #'
 #' @export
 #' @examples
-#' split_data("data.csv", prop = 0.7)
+#' split_data("data.csv", prop = 0.7, seed = 999)
 
 split_data <- function(file_path, prop = 0.8, seed = NULL) {
   # Error for invalid proportions
