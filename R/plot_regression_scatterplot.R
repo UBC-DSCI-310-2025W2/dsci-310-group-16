@@ -32,7 +32,7 @@ library(tidyverse)
 #'                                                x_var = "x", 
 #'                                                y_var = "y",
 #'                                                color_var = "z",
-#'                                                line_se = "TRUE", 
+#'                                                line_se = TRUE, 
 #'                                                line_color = "blue",
 #'                                                x_labs = "Label for X-Axis",
 #'                                                y_labs = "Label for Y-Axis",
@@ -81,17 +81,10 @@ plot_regression_scatterplot <- function(df,
 
 
   
-  
-# if logic to translate boolean string to actual boolean 
-  if (is.character(line_se)) {
-    if (line_se == "FALSE") {line_se_bool <- FALSE
-      } else if (line_se == "TRUE") {line_se_bool <- TRUE
-        } else { stop("Invalid argument. Please enter TRUE or FALSE")}
-
-    } else if (is.logical(line_se)) {line_se_bool <- line_se
-    } else {stop("Invalid argument. Please enter a boolean argument")}
-  
-  
+   
+ # if logic to check that line_se has a boolean valuee
+  if (!(is.logical(line_se))) {
+    stop("Invalid argument. Please enter a boolean argument")}
   
 # if statement for whether color is a specified column
 if (!is.null(color_var)) {
@@ -110,7 +103,7 @@ if (!is.null(color_var)) {
 # put all the layers together
   regression_scatterplot <-  regression_scatterplot +
     geom_point(alpha = 0.5) +
-    geom_smooth(method = "lm", se = line_se_bool, color = line_color) +
+    geom_smooth(method = "lm", se = line_se, color = line_color) +
     labs(
       x = x_labs,
       y = y_labs,

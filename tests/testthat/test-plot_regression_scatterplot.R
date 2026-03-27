@@ -162,7 +162,7 @@ test_that("plot_regression_scatterplot will not have the standard deviation of t
                                        x_var = "x", 
                                        y_var = "y",
                                        color_var = "z",
-                                       line_se = "FALSE")
+                                       line_se = FALSE)
   
   # pull the first layer to make sure axis are actually numeric 
   geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
@@ -379,8 +379,8 @@ test_that("plot_regression_scatterplot return an error if specification for line
                                            x_var = "x", 
                                            y_var = "y",
                                            color_var = "z",
-                                           line_se = "YES"), 
-               "Invalid argument. Please enter TRUE or FALSE")
+                                           line_se = "FALSE"), 
+               "Invalid argument. Please enter a boolean argument")
 })
 
 
