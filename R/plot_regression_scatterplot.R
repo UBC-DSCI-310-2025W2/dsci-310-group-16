@@ -1,8 +1,12 @@
+library(tidyverse)
+
+
 #' Create scatter plot graph 
 #'
 #' Creates a scatterplot with a regression line, taking in two numeric variables for x-axis and y-axis,
 #' with optional variables for formatting, 
-#' Plot will be saved as a png at specified location
+#' To be used with docopt
+#' 
 #'
 #' @param df A tidy dataframe 
 #' @param x_var Unquoted column name to plot on the x-axis
@@ -21,8 +25,22 @@
 #' @export
 #'
 #' @examples
+#' 
+#' plot_regression_scatterplot <- function(df =  data.frame(x=c(10, 20, 30, 40),
+#'                                                          y=c(-10, -50, -100, -150),
+#'                                                          z=c("class1", "class2" "class3", "class4"))
+#'                                                x_var = "x", 
+#'                                                y_var = "y",
+#'                                                color_var = "z",
+#'                                                line_se = "TRUE", 
+#'                                                line_color = "blue",
+#'                                                x_labs = "Label for X-Axis",
+#'                                                y_labs = "Label for Y-Axis",
+#'                                                title_labs = "Plot Title")
+#'                                     
+#'                                                
+#'                                          
 
-library(tidyverse)
 
 plot_regression_scatterplot <- function(df,
                                         x_var, 

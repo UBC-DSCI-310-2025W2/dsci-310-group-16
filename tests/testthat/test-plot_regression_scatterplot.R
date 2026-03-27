@@ -10,6 +10,7 @@ source("../../R/plot_regression_scatterplot.R")
 # - data has missing values (for x-axis, y-axis, and color)
 # - line_se is specified as FALSE
 # - changing the colour of line (ex. to blue instead of the default black)
+# - changing the title and axis labels 
 # 
 # Edge Cases
 # - no variance in the data (ex. same value in entire column)
@@ -212,6 +213,27 @@ test_that("plot_regression_scatterplot will generate a regression line of the sp
 
 
 
+
+test_that("plot_regression_scatterplot will run display specified title and axis labels", {
+  
+  chart <- plot_regression_scatterplot(two_numeric_columns, 
+                                       x_var = "x", 
+                                       y_var = "y",
+                                       x_labs = "New X-Axis Label",
+                                       y_labs = "New Y-Axis Label",
+                                       title_labs = "New Title")
+  
+  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  
+  
+  expect_no_error(chart) #chart generated without error
+  expect_true(!is.null(chart$labels$x)) #x label exists
+  expect_true(!is.null(chart$labels$y)) #y label exists
+  expect_true(!is.null(chart$labels$title)) #chart title exists
+  expect_true(is.numeric(geom_point_layer$x))
+  expect_true(is.numeric(geom_point_layer$y))
+  
+})
 
 # ---------Edge cases-------------------------------------
 
