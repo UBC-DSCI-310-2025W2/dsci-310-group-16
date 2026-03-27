@@ -37,22 +37,22 @@ plot_regression_scatterplot <- function(df,
   
 { 
   
-  # if logic to check that column name actually exists
+# if logic to check that column name actually exists
   
   if ( !(x_var %in% colnames(df)) & !(y_var %in% colnames(df))) {
     stop("Column does not exist. Please enter a valid column name")}
   
 
-  # if logic to ensure dataframe isn't empty 
+# if logic to ensure dataframe isn't empty 
   if (nrow(df) == 0) {stop("Dataframe is empty. Please input valid data")}  
   
   
-  # if logic to ensure theres more than 1 row of data
+# if logic to ensure theres more than 1 row of data
   if (nrow(df) == 1) {stop("Not enough data. Please input at least two rows of data")}
   
   
   
-  # if logic to check that x and y axis columns are numeric   
+# if logic to check that x and y axis columns are numeric   
   if (!is.numeric(df[[x_var]])) {
     stop("Incorrect data type. Please specify numerical data for the x and y-axis")
   }
@@ -61,7 +61,6 @@ plot_regression_scatterplot <- function(df,
     stop("Incorrect data type. Please specify numerical data for the x and y-axis")
   }
 
-  
 
   
   
@@ -90,7 +89,7 @@ if (!is.null(color_var)) {
   ))
 }
   
-  # --- add layers ---
+# put all the layers together
   regression_scatterplot <-  regression_scatterplot +
     geom_point(alpha = 0.5) +
     geom_smooth(method = "lm", se = line_se_bool, color = line_color) +
@@ -100,7 +99,7 @@ if (!is.null(color_var)) {
       title = title_labs
     )
   
-  return( regression_scatterplot)
+  return(regression_scatterplot)
 }                 
                                           
                                           
