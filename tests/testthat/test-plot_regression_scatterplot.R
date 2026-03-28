@@ -1,6 +1,10 @@
 library(testthat)
+library(vdiffr)
 
 source("../../R/plot_regression_scatterplot.R")
+
+### Using vdiffr::expect_doppelganger() to compare unit test outputs to expected outputs
+### Helper test data and expected outputs can be found at helper-plot_regression_scatterplot.R
 
 # Expected Cases
 # - two numerical columns specified for x and y (no negative values)
@@ -33,8 +37,7 @@ source("../../R/plot_regression_scatterplot.R")
 
 # ---------Expected cases-------------------------------------
 
-# for certain plot attributes, not going to explicitly test in every case (Ex. line_se = TRUE and line_color = "red")
-#those attributes will be the same unless explicitly changed (see tests)
+
 
 test_that("plot_regression_scatterplot will run without error for two numeric columns with no missing values", {
   
@@ -42,22 +45,9 @@ test_that("plot_regression_scatterplot will run without error for two numeric co
                                        x_var = "x", 
                                        y_var = "y")
   
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
   
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  
-  # pull the second layer which is the geom_smooth() layer 
-  smooth_layer <- (ggplot_build(chart))$data[[2]]
-  
-  expect_true("se" %in% names(smooth_layer)) #should be TRUE because of default value
-  expect_equal(head(smooth_layer,1)[['colour']], "black") #should be black because of default value
+  expect_doppelganger("two numeric columns, no missing", 
+                      plot_two_numeric_columns) #should be identical to expected output in helper file
 })
 
 
@@ -68,16 +58,9 @@ test_that("plot_regression_scatterplot will run without error for two numeric co
                                        x_var = "neg_x", 
                                        y_var = "neg_y")
   
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("two negative numeric columns, no missing",
+                      plot_two_negative_numeric_columns) #should be identical to expected output in helper file
   
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  #skipping tests for line_se and line_color because they won't have changed from defaults 
   
 })
 
@@ -88,22 +71,8 @@ test_that("plot_regression_scatterplot will run without error for two numeric co
                                        y_var = "y",
                                        color_var = "z")
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
-
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  
-  # ensuring aes color argument doesn't override line color
-  smooth_layer <- (ggplot_build(chart))$data[[2]] # pull the second layer which is the geom_smooth() layer 
-  expect_equal(head(smooth_layer,1)[['colour']], "black") #should still be black 
-  
+  expect_doppelganger("two numeric columns with color", 
+                      plot_two_numeric_columns_color) #should be identical to expected output in helper file
   
   
 })
@@ -116,17 +85,9 @@ test_that("plot_regression_scatterplot will run without error for two numeric co
                                        y_var = "y",
                                        color_var = "z")
   
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("two numeric columns with categorical color column",
+                      plot_mixed_col_types) #should be identical to expected output in helper file
   
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  #omitting explicit tests for line_se and line_color because defaults are tested above 
   
 })
 
@@ -139,17 +100,8 @@ test_that("plot_regression_scatterplot will run without error for data with miss
                                        y_var = "y",
                                        color_var = "z")
   
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
-  
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  #omitting explicit tests for line_se and line_color because defaults are tested above 
+  expect_doppelganger("has missing values in axis columns and color column",
+                      plot_missing) #should be identical to expected output in helper file
   
   
 })
@@ -164,22 +116,10 @@ test_that("plot_regression_scatterplot will not have the standard deviation of t
                                        color_var = "z",
                                        line_se = FALSE)
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+ 
+  expect_doppelganger("line_se is specified FALSE",
+                      plot_no_line_se) #should be identical to expected output in helper file
   
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  # pull the second layer which is the geom_smooth() layer 
-  smooth_layer <- (ggplot_build(chart))$data[[2]]
-  
-  expect_false("se" %in% names(smooth_layer)) #should be FALSE from input specification
-
 })
 
 
@@ -192,23 +132,10 @@ test_that("plot_regression_scatterplot will generate a regression line of the sp
                                        color_var = "z",
                                        line_color = "blue")
   
+  expect_doppelganger("regression line should be blue",
+                      plot_line_color) #should be identical to expected output in helper file
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
-  
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
 
-  
- # pull the second layer which is the geom_smooth() layer 
- smooth_layer <- (ggplot_build(chart))$data[[2]]
-  
-  expect_equal(head(smooth_layer,1)[['colour']], "blue") #check if the line colour is correct
 })
 
 
@@ -216,22 +143,16 @@ test_that("plot_regression_scatterplot will generate a regression line of the sp
 
 test_that("plot_regression_scatterplot will run display specified title and axis labels", {
   
-  chart <- plot_regression_scatterplot(two_numeric_columns, 
+  chart <- plot_regression_scatterplot(two_numeric_columns_color, 
                                        x_var = "x", 
                                        y_var = "y",
                                        x_labs = "New X-Axis Label",
                                        y_labs = "New Y-Axis Label",
                                        title_labs = "New Title")
   
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("chart should have specified axis labels and title",
+                      plot_labels) #should be identical to expected output in helper file
   
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
   
 })
 
@@ -244,20 +165,11 @@ test_that("plot_regression_scatterplot will run without error for data with no v
                                        y_var = "y",
                                        color_var = "z")
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("data has no variance, should not have a regression line",
+                      plot_no_variance) #should be identical to expected output in helper file
   
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  smooth_layer <- (ggplot_build(chart))$data[[2]]
-  expect_false("se" %in% names(smooth_layer)) #should be FALSE. No variance means no relation between X and Y
-
 })
+
 
 test_that("plot_regression_scatterplot will have datapoints all be the same colour if theres only one class for specified column", {
   
@@ -266,17 +178,9 @@ test_that("plot_regression_scatterplot will have datapoints all be the same colo
                                        y_var = "y",
                                        color_var = "z")
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("specified color column has only one class",
+                      plot_color_one_class) #should be identical to expected output in helper file
   
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-
 })
 
 
@@ -287,15 +191,9 @@ test_that("plot_regression_scatterplot will plot outliers without error", {
                                        y_var = "y",
                                        color_var = "z")
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
+  expect_doppelganger("outliers in x and y axis",
+                      plot_outliers) #should be identical to expected output in helper file
   
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
   
 
 })
@@ -308,20 +206,8 @@ test_that("plot_regression_scatterplot will plot a regression graph with only tw
                                        y_var = "y",
                                        color_var = "z")
   
-  # pull the first layer to make sure axis are actually numeric 
-  geom_point_layer <- ggplot2::layer_data(chart, 1)  #pulls the geom_point layer
-  
-  expect_no_error(chart) #chart generated without error
-  expect_true(!is.null(chart$labels$x)) #x label exists
-  expect_true(!is.null(chart$labels$y)) #y label exists
-  expect_true(!is.null(chart$labels$title)) #chart title exists
-  expect_true(is.numeric(geom_point_layer$x))
-  expect_true(is.numeric(geom_point_layer$y))
-  
-  #ensure the regression line is graphed between the two points
-  smooth_layer <- (ggplot_build(chart))$data[[2]]
-  expect_true("se" %in% names(smooth_layer)) #should be TRUE because of default value
-  
+  expect_doppelganger("dataset with only twos",
+                      plot_two_rows) #should be identical to expected output in helper file
   
   
 
@@ -348,7 +234,7 @@ test_that("plot_regression_scatterplot return an error if the dataframe is empty
                                            x_var = "x", 
                                            y_var = "y",
                                            color_var = "z"), 
-               "Dataframe is empty. Please input valid data")
+              plot_empty)
 })
 
 
@@ -359,7 +245,7 @@ test_that("plot_regression_scatterplot return an error if there is only one row 
                                            x_var = "x", 
                                            y_var = "y",
                                            color_var = "z"), 
-               "Not enough data. Please input at least two rows of data")
+               plot_one_row)
 })
 
 
@@ -369,7 +255,7 @@ test_that("plot_regression_scatterplot return an error if x_var and y_var are no
                                            x_var = "x", 
                                            y_var = "y",
                                            color_var = "z"), 
-               "Incorrect data type. Please specify numerical data for the x and y-axis")
+               plot_wrong_dtype)
 })
 
 
@@ -380,7 +266,7 @@ test_that("plot_regression_scatterplot return an error if specification for line
                                            y_var = "y",
                                            color_var = "z",
                                            line_se = "FALSE"), 
-               "Invalid argument. Please enter a boolean argument")
+               plot_line_se_bool)
 })
 
 
