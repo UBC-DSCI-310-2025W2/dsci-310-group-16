@@ -134,6 +134,7 @@ R (4.5.2) as specified in Docker container. Following packages are also defined 
 - renv (1.1.6)
 - docopt (0.7.2)
 - knitr (1.51)
+- vdiffr (1.0.9)
 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
