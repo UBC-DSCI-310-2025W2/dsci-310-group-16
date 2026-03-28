@@ -4,6 +4,8 @@ library(docopt)
 library(tidyverse)
 library(ggplot2)
 
+source("R/plot_regression_scatterplot.R") #absolute path from project root because we are using Makefile
+
 doc <- "
 Usage:
 03_eda.R --input=<input_file> --out_prefix=<prefix>
@@ -40,14 +42,16 @@ main <- function(input_file, out_prefix) {
   ggsave(paste0(out_prefix, "_hist-child-height.png"), hist_child_height)
   
   # Figure 2. Relationship between midparent height and child height
-  scatter_parent_child <- ggplot(data, aes(x = midparent_height, y = child_height)) +
-    geom_point(alpha = 0.5) +
-    geom_smooth(method = "lm", color = "red") +
-    labs(
-      title = "Child Height vs Midparent Height",
-      x = "Midparent Height",
-      y = "Child Height"
-    )
+
+  scatter_parent_child <- plot_regression_scatterplot(data,
+                                        x_var = "midparent_height" , 
+                                        y_var = "child_height", 
+                                        color_var = NULL, #optional arg
+                                        line_se = TRUE, #optional arg
+                                        line_color = "red", #optional arg 
+                                        x_labs = "Midparent Height",
+                                        y_labs = "Child Height", 
+                                        title_labs = "Child Height vs Midparent Height") 
   
   ggsave(paste0(out_prefix, "_scatter-parent-child-height.png"), scatter_parent_child)
   
@@ -63,14 +67,16 @@ main <- function(input_file, out_prefix) {
   ggsave(paste0(out_prefix, "_boxplot-gender-height.png"), boxplot_gender_height)
   
   # Figure 4. Relationship between mother’s height and father’s height 
-  scatter_mother_father <- ggplot(data, aes(x = mother_height, y = father_height)) +
-    geom_point(alpha = 0.5) +
-    geom_smooth(method = "lm", color = "red") +
-    labs(
-      title = "Mother vs Father Height",
-      x = "Mother Height",
-      y = "Father Height"
-    )
+
+  scatter_mother_father <- plot_regression_scatterplot(data,
+                                                      x_var = "mother_height" , 
+                                                      y_var = "father_height", 
+                                                      line_color = "red", #optional arg 
+                                                      x_labs = "Mother Height",
+                                                      y_labs = "Father Height", 
+                                                      title_labs = "Mother vs Father Height") 
+  
+  
   ggsave(paste0(out_prefix, "_scatter-mother-father-height.png"), scatter_mother_father)
 }
 
