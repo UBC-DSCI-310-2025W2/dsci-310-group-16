@@ -67,6 +67,20 @@ make clean
 
 This will remove the intermediate outputs as well as the rendered reports. 
 
+#### Accessing and Evaluating Function Testing
+
+The functions used in our analysis can be found in the `R/` directory while tests can be found in `tests/`. 
+
+To run our test suite, run the following in the RStudio terminal:
+
+```bash
+
+testthat::test_dir('tests/testthat')
+```
+
+This will run all commands in the project directory. 
+
+
 #### Closing the Container 
 
 12) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
@@ -135,6 +149,7 @@ R (4.5.2) as specified in Docker container. Following packages are also defined 
 - docopt (0.7.2)
 - knitr (1.51)
 - vdiffr (1.0.9)
+- testthat (3.3.2)
 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
