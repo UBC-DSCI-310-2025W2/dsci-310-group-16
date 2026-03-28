@@ -5,6 +5,7 @@ library(tidyverse)
 library(tidymodels)
 library(ggplot2)
 
+source("R/split-data.R")
 source("R/plot_regression_scatterplot.R") 
 source("R/evaluate_model.R")
 
@@ -20,16 +21,10 @@ Options:
 opt <- docopt(doc)
 
 main <- function(input_file, out_prefix) {
-  set.seed(123)
   
-  # Read data
-  data <- read_csv(input_file, show_col_types = FALSE)
-  
-  # Split the data into training (80%) and testing (20%) sets
-  split <- initial_split(data, prop = 0.8)
-  
-  train <- training(split)
-  test  <- testing(split)
+  split <- split_data(input_file, prop = 0.8, seed = 123)
+  train <- split$train
+  test <- split$test
   
   # Specify the linear regression model
   lm_spec <- linear_reg() %>%
