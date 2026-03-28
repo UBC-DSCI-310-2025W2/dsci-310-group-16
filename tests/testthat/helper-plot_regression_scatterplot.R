@@ -61,39 +61,103 @@ wrong_dtype_df <- data.frame(x=c("100", "200", "300", "400"),
 # ---------EXPECTED FUNCTION OUTPUT FROM PLOT_REGRESSION_SCATTERPLOT()-----------
 
 # since this function is a plot, the expected output will either be a chart or an error message
-# the helper data are toy datasets so there's not much value in repeatedly generating garbage graphs for expected cases
-# therefore, will be creating the expected outputs of a valid case, edge case, and error cases for coverage 
-
+# will be using vdiffr to compare the unit test graphical output with expected graphical output
 
 # Expected Cases ------------------------
 
-plot_mixed_col_types_df <- ggplot(mixed_col_types_df, aes(x = x, y = y, color = z)) +
+plot_two_numeric_columns <- ggplot(two_numeric_columns, aes(x = x, y = y)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
-    x = "X Label",
-    y = "Y Label",
-    title = "Expected Test Case"
-  )
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
 
-#print(plot_mixed_col_types_df) #uncomment to view in the console 
-  
+
+plot_two_negative_numeric_columns <- ggplot(two_numeric_columns, aes(x = neg_x, y = neg_y)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+
+plot_two_numeric_columns_color  <- ggplot(two_numeric_columns_color, 
+                                          aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+
+plot_mixed_col_types <- ggplot(mixed_col_types_df, aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+plot_missing <- ggplot(missing_df, aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+plot_no_line_se <- ggplot(two_numeric_columns_color, 
+                          aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+plot_line_color <- ggplot(two_numeric_columns_color, 
+                          aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "blue") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
+
+
+plot_labels <- ggplot(two_numeric_columns_color, 
+                          aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "NEW Label for X-Axis",
+    y = "NEW Label for Y-Axis",
+    title = "NEW Plot Title")
+
 
 # Edge Cases -----------------------------------
 
-plot_no_variance_df  <- ggplot(no_variance_df, aes(x = x, y = y, color = z)) +
+plot_no_variance  <- ggplot(no_variance_df, aes(x = x, y = y, color = z)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
-    x = "X Label",
-    y = "Y Label",
-    title = "Edge Case - No Variance"
-  )
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
 
-#print(plot_no_variance_df) #uncomment to view in console
+plot_color_one_class  <- ggplot(one_color_df, aes(x = x, y = y, color = z)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(
+    x = "Label for X-Axis",
+    y = "Label for Y-Axis",
+    title = "Plot Title")
 
 
-plot_outliers_df  <- ggplot(outliers_df, aes(x = x, y = y, color = z)) +
+plot_outliers  <- ggplot(outliers_df, aes(x = x, y = y, color = z)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
@@ -102,10 +166,8 @@ plot_outliers_df  <- ggplot(outliers_df, aes(x = x, y = y, color = z)) +
     title = "Edge Case - Outliers in X and Y"
   )
 
-#print(plot_outliers_df) #uncomment to view in console 
 
-
-plot_two_rows_df  <- ggplot(two_rows_df, aes(x = x, y = y, color = z)) +
+plot_two_rows  <- ggplot(two_rows_df, aes(x = x, y = y, color = z)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = TRUE, color = "black") +
   labs(
@@ -114,19 +176,18 @@ plot_two_rows_df  <- ggplot(two_rows_df, aes(x = x, y = y, color = z)) +
     title = "Edge Case - Only Two Rows of Data"
   )
 
-#print(plot_two_rows_df) #uncomment to view in console 
 
 
 # Error Cases ---------------------------------------------
 
-#note: these should be error messages but I can't store them as actual error messages with stop()
-# or else the test suite won't continue running
+#these are the error messages that should be generated in the event of error cases
 
-plot_empty_df <- "Dataframe is empty. Please input valid data"
+plot_empty <- "Dataframe is empty. Please input valid data"
 
 
-plot_one_row_df <- "Not enough data. Please input at least two rows of data"
+plot_one_row <- "Not enough data. Please input at least two rows of data"
 
-plot_wrong_dtype_df <- "Incorrect data type. Please specify numerical data for the x and y-axis"
+plot_wrong_dtype <- "Incorrect data type. Please specify numerical data for the x and y-axis"
 
  
+plot_line_se_bool <- "Invalid argument. Please enter a boolean argument"
