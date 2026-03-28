@@ -3,6 +3,8 @@ library(readr)
 library(dplyr)
 library(tidyr)
 
+source("R/rename-and-drop-na.R")
+
 doc <- "
 Usage:
   02_clean_data.R --input=<input_path> --output=<output_path>
@@ -14,20 +16,10 @@ Options:
 opt <- docopt(doc)
 
 main <- function(input, output) {
-  # Read the raw data from the specified input file
   raw_data <- read_csv(input)
   
-  # Clean the data (example: remove rows with missing values)
-  cleaned_data <- raw_data %>%
-  rename(
-    father_height    = father,
-    mother_height    = mother,
-    midparent_height = midparentHeight,
-    child_height     = childHeight
-  ) %>%
-  drop_na()
+  cleaned_data <- rename_and_drop_na(raw_data)
   
-  # Save the cleaned data to the specified output file
   write_csv(cleaned_data, output)
 }
 
