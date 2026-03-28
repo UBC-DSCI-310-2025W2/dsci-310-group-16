@@ -6,7 +6,7 @@ library(tidymodels)
 library(ggplot2)
 
 source("R/plot_regression_scatterplot.R") 
-
+source("R/evaluate_model.R")
 
 doc <- "
 Usage:
@@ -53,10 +53,7 @@ main <- function(input_file, out_prefix) {
   write_csv(coeffs, paste0(out_prefix, "_coefficients.csv"))
   
   # Save metrics
-  metrics <- lm_fit %>%
-    predict(test) %>%
-    bind_cols(test) %>%
-    metrics(truth = child_height, estimate = .pred)
+  metrics <- evaluate_model(lm_fit, test, truth_col = "child_height")
   
   write_csv(metrics, paste0(out_prefix, "_metrics.csv"))
   
