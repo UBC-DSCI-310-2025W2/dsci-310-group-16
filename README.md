@@ -67,6 +67,20 @@ make clean
 
 This will remove the intermediate outputs as well as the rendered reports. 
 
+#### Accessing and Evaluating Function Testing
+
+The functions used in our analysis can be found in the `R/` directory while tests can be found in `tests/`. 
+
+To run our test suite, run the following in the RStudio terminal:
+
+```bash
+
+testthat::test_dir('tests/testthat')
+```
+
+This will run all commands in the project directory. 
+
+
 #### Closing the Container 
 
 12) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
