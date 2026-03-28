@@ -6,6 +6,8 @@ library(tidymodels)
 library(ggplot2)
 
 source("R/split-data.R")
+source("R/plot_regression_scatterplot.R") 
+source("R/evaluate_model.R")
 
 doc <- "
 Usage:
@@ -46,21 +48,21 @@ main <- function(input_file, out_prefix) {
   write_csv(coeffs, paste0(out_prefix, "_coefficients.csv"))
   
   # Save metrics
-  metrics <- lm_fit %>%
-    predict(test) %>%
-    bind_cols(test) %>%
-    metrics(truth = child_height, estimate = .pred)
+  metrics <- evaluate_model(lm_fit, test, truth_col = "child_height")
   
   write_csv(metrics, paste0(out_prefix, "_metrics.csv"))
   
   # Scatter plot with regression line
-  regression_scatter <- ggplot(train, aes(x = midparent_height, y = child_height, color = gender)) +
-    geom_point(alpha = 0.4) +
-    geom_smooth(method = "lm", se = TRUE) +
-    labs(
-      x = "Midparent Height (inches)",
-      y = "Child Height (inches)",
-      title = "Midparent Height vs Child Height")
+
+  
+  regression_scatter <- plot_regression_scatterplot(data,
+                                                       x_var = "midparent_height" , 
+                                                       y_var = "child_height",
+                                                       color_var = "gender",
+                                                       x_labs = "Midparent Height (inches)",
+                                                       y_labs = "Child Height (inches)", 
+                                                       title_labs = "Midparent Height vs Child Height") 
+  
   
   ggsave(filename = paste0(out_prefix, "_model-plot.png"), regression_scatter)
 }
