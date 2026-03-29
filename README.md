@@ -26,7 +26,7 @@ Docker Desktop will be required to reproduce our computational environment and r
 2) Have Docker Desktop actively running.  
 3) To create a copy of this project, clone this project repo to your local computer with the command  
 ```bash
-git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git'
+git clone git@github.com:UBC-DSCI-310-2025W2/dsci-310-group-16.git
 ```
 4) Navigate to the project root. It should look something like `[*system path...*]/dsci-310-group-16`.    
 5) Ensure you are at the project root. Run the command  
@@ -49,23 +49,30 @@ It will take a few moments for the environment to initialize and all the package
 
 #### Running The Analysis with Make
 
-The project is set up with a Makefile to automate the workflow. This will allow the entire project to be run from start to finish, including but not limited to, reading in data, running the analysis, creating intermediate objects, rendering the report, and cleaning the repository. The steps are as follows:
+The project uses GNU Make and a Makefile to automate the workflow. 
 
-10) To run the entire analysis, type the following using Bash:
+10) Ensure you are at the project root. To execute the entire workflow, run the following in the terminal: 
    
 ```bash
 make all
 ```
 
-The intermediate outputs will automatically generate. Once the process is complete, the rendered reports can be found within the 'results/' folder.
+Doing so will:
+- Load and process input data    
+- Run analysis scripts  
+- Generate intermediate files  
+- Render final reports
 
-11) To clean the repository and remove intermediate outputs, type the following using Bash:
+Once the process has completed, the final rendered HTML report can be found `reports/galton-heights-regression.html`.  
+
+11) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
 
 ```
 make clean
 ```
 
-This will remove the intermediate outputs as well as the rendered reports. 
+This will delete all intermediate and final outputs. 
+
 
 #### Accessing and Evaluating Function Testing
 
