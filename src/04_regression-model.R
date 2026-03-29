@@ -55,7 +55,7 @@ main <- function(input_file, out_prefix) {
   # Scatter plot with regression line
 
   
-  regression_scatter <- plot_regression_scatterplot(data,
+  regression_scatter <- plot_regression_scatterplot(read_csv(input_file),
                                                        x_var = "midparent_height" , 
                                                        y_var = "child_height",
                                                        color_var = "gender",
