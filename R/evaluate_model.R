@@ -45,20 +45,11 @@ evaluate_model <- function(fit, test_data, truth_col = "childHeight") {
   }
 
   # Compute evaluation metrics
-  metrics <- tibble(
-    rmse = yardstick::rmse_vec(
-      truth = preds[[truth_col]],
-      estimate = preds$.pred
-    ),
-    mae = yardstick::mae_vec(
-      truth = preds[[truth_col]],
-      estimate = preds$.pred
-    ),
-    rsq = yardstick::rsq_vec(
-      truth = preds[[truth_col]],
-      estimate = preds$.pred
-    )
-  )
+  metrics <- yardstick::metrics(
+  preds,
+  truth = !!rlang::sym(truth_col),
+  estimate = .pred
+)
 
-  return(metrics)
+return(metrics)
 }
