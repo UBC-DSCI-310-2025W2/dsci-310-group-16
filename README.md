@@ -110,7 +110,7 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     --rm \
     -p 8787:8787 \
     -e PASSWORD="group16" \
-    dsci-310-group-16`
+    dsci-310-group-16
 ```
 4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in Bash will stop the container.  
@@ -136,7 +136,7 @@ docker pull eao939/dsci310-group16-docker
     --rm \
     -p 8787:8787 \
     -e PASSWORD="group16" \
-    eao939/dsci310-group16-docker`
+    eao939/dsci310-group16-docker
 ```
 
 4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
