@@ -3,8 +3,7 @@
 library(docopt)
 library(tidyverse)
 library(ggplot2)
-
-source("R/plot_regression_scatterplot.R") #absolute path from project root because we are using Makefile
+library(galtonheightshelpr)
 
 doc <- "
 Usage:
