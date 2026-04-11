@@ -12,6 +12,17 @@ Our project explores the relationship between parents' height and offspring gend
 
 Our project uses a Docker container that is configured to run R and RStudio (version 4.5.2) with `tidyverse`. Provided are the instructions for reproducing the environment. 
 
+#### Package: galtonheightshelpr
+
+This project uses a custom R package, `galtonheightshelpr`, which contains reusable functions developed as part of this analysis. The package is hosted on Github and can be found [here](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr).
+
+This package is already included in our computational environment and workflow. However, if you would like to use this package in another project, it can be installed using `devtools`:
+
+```r
+# install.packages("devtools") # run once if not installed
+library(devtools)
+devtools::install_github("UBC-DSCI-310-2025W2/galton-heights-helpr")
+```
 
 ## Instructions for Use
 
@@ -47,25 +58,13 @@ renv::restore()
 ```
 It will take a few moments for the environment to initialize and all the packages to load. Once the environment is initialized, proceed to running the analysis. 
 
-#### Installing Package: galtonheightshelpr
 
-This project uses a custom R package, `galtonheightshelpr`, which contains reusable functions developed as part of this analysis.
-
-Since the package is hosted on GitHub, you must install it using `devtools`:
-
-10) Navigate to the console and enter:
-
-```r
-# install.packages("devtools") # run once if not installed
-library(devtools)
-devtools::install_github("UBC-DSCI-310-2025W2/galton-heights-helpr")
-```
 
 #### Running The Analysis with Make
 
 The project uses GNU Make and a Makefile to automate the workflow. 
 
-11) Ensure you are at the project root. To execute the entire workflow, run the following in the terminal: 
+10) Ensure you are at the project root. To execute the entire workflow, run the following in the terminal: 
    
 ```bash
 make all
@@ -89,7 +88,7 @@ Doing so will:
     ```
 Once the process has completed, the final rendered HTML report can be found `reports/galton-heights-regression.html`.  
 
-12) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
+11) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
 
 ```
 make clean
@@ -108,7 +107,7 @@ https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr
 
 #### Closing the Container 
 
-13) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
+12) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
 ```
 docker-compose down
 ```  
@@ -166,20 +165,24 @@ docker system prune
 
 ### Dependencies 
 
-R (4.5.2) as specified in Docker container. Following packages are also defined in renv.lock 
+R (4.5.2) as specified in Docker container. The following key packages are also defined in renv.lock 
 - tidyverse (2.0.0)
 - tidymodels (1.4.1)
 - rmarkdown (2.30)
 - renv (1.1.6)
 - docopt (0.7.2)
 - knitr (1.51)
-- vdiffr (1.0.9)
-- testthat (3.3.2)
-- galtonheightshelpr (0.0.0.9000)
 - pointblank (0.12.3)
+- galtonheightshelpr (0.0.0.9000)
 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
+
+To create our associated package [galtonheightshelpr](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr), key packages used include:
+- devtools (2.5.0)
+- remotes (2.5.0)
+- vdiffr (1.0.9)
+- usethis (3.2.1)
 
 
 ## License 
