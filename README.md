@@ -177,7 +177,7 @@ R (4.5.2) as specified in Docker container. The following key packages are also 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
 
-To create our associated package [galtonheightshelpr](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr), key packages include
+To create our associated package [galtonheightshelpr](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr), key packages used include:
 - devtools (2.5.0)
 - remotes (2.5.0)
 - vdiffr (1.0.9)
