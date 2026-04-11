@@ -47,11 +47,24 @@ renv::restore()
 ```
 It will take a few moments for the environment to initialize and all the packages to load. Once the environment is initialized, proceed to running the analysis. 
 
+#### Installing Package: galtonheightshelpr
+
+This project uses a custom R package, `galtonheightshelpr`, which contains reusable functions developed as part of this analysis.
+
+Since the package is hosted on GitHub, you must install it using `devtools`:
+10) Navigate to the console and enter:
+
+```r
+# install.packages("devtools") # run once if not installed
+library(devtools)
+devtools::install_github("UBC-DSCI-310-2025W2/galton-heights-helpr")
+```
+
 #### Running The Analysis with Make
 
 The project uses GNU Make and a Makefile to automate the workflow. 
 
-10) Ensure you are at the project root. To execute the entire workflow, run the following in the terminal: 
+11) Ensure you are at the project root. To execute the entire workflow, run the following in the terminal: 
    
 ```bash
 make all
@@ -65,7 +78,7 @@ Doing so will:
 
 Once the process has completed, the final rendered HTML report can be found `reports/galton-heights-regression.html`.  
 
-11) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
+12) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
 
 ```
 make clean
@@ -76,21 +89,15 @@ This will delete all intermediate and final outputs.
 
 #### Accessing and Evaluating Function Testing
 
-The functions used in our analysis can be found in the `R/` directory while tests can be found in `tests/`. 
+The functions used in this analysis are part of the external package `galtonheightshelpr`.
 
-To run our test suite, run the following in the RStudio terminal:
-
-```bash
-
-testthat::test_dir('tests/testthat')
-```
-
-This will run all commands in the project directory. 
+All unit tests for these functions are maintained in the package repository:
+https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr
 
 
 #### Closing the Container 
 
-12) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
+13) To close the Docker container, hold the **Ctrl** key and click "C" twice. This will stop the running process. To stop and remove the container, enter the command:
 ```
 docker-compose down
 ```  
@@ -112,7 +119,7 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     -e PASSWORD="group16" \
     dsci-310-group-16`
 ```
-4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in Bash will stop the container.  
 6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
@@ -139,7 +146,7 @@ docker pull eao939/dsci310-group16-docker
     eao939/dsci310-group16-docker`
 ```
 
-4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
 6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
@@ -157,6 +164,7 @@ R (4.5.2) as specified in Docker container. Following packages are also defined 
 - knitr (1.51)
 - vdiffr (1.0.9)
 - testthat (3.3.2)
+- galtonheightshelpr (0.0.0.9000)
 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
