@@ -3,6 +3,7 @@
 .DS_Store
 .Rproj.user
 .ipynb_checkpoints/
+tests/vdiffr.Rout.fail
 
 
 # History files
