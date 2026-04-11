@@ -17,7 +17,6 @@ Our project uses a Docker container that is configured to run R and RStudio (ver
 This project uses a custom R package, `galtonheightshelpr`, which contains reusable functions developed as part of this analysis. The package is hosted on Github and can be found [here](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr).
 
 This package is already included in our computational environment and workflow. However, if you would like to use this package in another project, it can be installed using `devtools`:
-Since the package is hosted on GitHub, you must install it using `devtools`:
 
 ```r
 # install.packages("devtools") # run once if not installed
