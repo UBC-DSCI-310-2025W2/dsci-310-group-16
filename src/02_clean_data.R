@@ -3,7 +3,7 @@ library(readr)
 library(dplyr)
 library(tidyr)
 
-source("R/rename-and-drop-na.R")
+source("R/rename_and_drop_na.R")
 
 doc <- "
 Usage:
