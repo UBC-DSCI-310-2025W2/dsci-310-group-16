@@ -3,7 +3,7 @@ library(tidyverse)
 library(tidymodels)
 library(testthat)
 
-source("../../R/split-data.R")
+source("../../R/split_data.R")
 
 
 # Tests for simple expected use cases
