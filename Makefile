@@ -47,7 +47,7 @@ $(PROC)/galton_clean.csv: $(SRC)/02_clean_data.R $(RAW)/galton_raw.csv | $(PROC)
 # Output: sentinel file (.validated) confirming validation passed
 # Purpose: Run pointblank checks before any analysis or modeling
 
-$(PROC)/.validated: $(SRC)/02.5_validate-data.R $(PROC)/galton_clean.csv
+$(PROC)/.validated: $(SRC)/02.5_validate_data.R $(PROC)/galton_clean.csv
 	$(R) $(RFLAGS) $<  \
 		--input="$(PROC)/galton_clean.csv" && \
 	touch $@
@@ -67,7 +67,7 @@ $(EDA)/eda.csv: $(SRC)/03_eda.R $(PROC)/galton_clean.csv $(PROC)/.validated | $(
 # Output: regression results (coefficients, metrics saved with prefix "regression")
 # Purpose: Fit a linear regression model to predict child height from parent height and gender
 
-$(REG)/regression.csv: $(SRC)/04_regression-model.R $(PROC)/galton_clean.csv $(PROC)/.validated | $(REG)
+$(REG)/regression.csv: $(SRC)/04_regression_model.R $(PROC)/galton_clean.csv $(PROC)/.validated | $(REG)
 	$(R) $(RFLAGS) $< \
 		--input="$(PROC)/galton_clean.csv" \
 		--out_prefix="$(REG)/regression"
