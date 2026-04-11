@@ -77,6 +77,16 @@ Doing so will:
 - Generate intermediate files  
 - Render final reports
 
+    1) To run only the data pipeline, run the following in Bash:
+
+    ```
+    make data
+    ```
+    2) To generate the report only, run the following in Bash:
+
+    ```
+    make reports
+    ```
 Once the process has completed, the final rendered HTML report can be found `reports/galton-heights-regression.html`.  
 
 12) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
@@ -118,7 +128,7 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     --rm \
     -p 8787:8787 \
     -e PASSWORD="group16" \
-    dsci-310-group-16`
+    dsci-310-group-16
 ```
 4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in Bash will stop the container.  
@@ -144,7 +154,7 @@ docker pull eao939/dsci310-group16-docker
     --rm \
     -p 8787:8787 \
     -e PASSWORD="group16" \
-    eao939/dsci310-group16-docker`
+    eao939/dsci310-group16-docker
 ```
 
 4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis

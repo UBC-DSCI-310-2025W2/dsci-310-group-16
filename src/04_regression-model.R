@@ -4,7 +4,14 @@ library(docopt)
 library(tidyverse)
 library(tidymodels)
 library(ggplot2)
+<<<<<<< HEAD
 library(galtonheightshelpr)
+=======
+
+source("R/split_data.R")
+source("R/plot_regression_scatterplot.R") 
+source("R/evaluate_model.R")
+>>>>>>> main
 
 doc <- "
 Usage:
