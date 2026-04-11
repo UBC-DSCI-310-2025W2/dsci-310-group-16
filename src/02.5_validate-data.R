@@ -1,7 +1,16 @@
 library(pointblank)
 library(tidyverse)
 
-data <- read_csv("data/processed/galton_clean.csv")
+args <- commandArgs(trailingOnly = TRUE)
+input_arg <- args[grep("--input=", args)]
+
+input <- if (length(input_arg) > 0) {
+  sub("--input=", "", input_arg)
+} else {
+  here::here("data/processed/galton_clean.csv")
+}
+
+data <- read_csv(input)
 
 fatal   <- action_levels(stop_at = 1)
 warn    <- action_levels(warn_at = 0.05)

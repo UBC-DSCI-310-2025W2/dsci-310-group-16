@@ -176,6 +176,7 @@ R (4.5.2) as specified in Docker container. Following packages are also defined 
 - vdiffr (1.0.9)
 - testthat (3.3.2)
 - galtonheightshelpr (0.0.0.9000)
+- pointblank (0.12.3)
 
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
