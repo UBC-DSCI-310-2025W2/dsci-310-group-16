@@ -42,12 +42,22 @@ $(PROC)/galton_clean.csv: $(SRC)/02_clean_data.R $(RAW)/galton_raw.csv | $(PROC)
 		--input="$(RAW)/galton_raw.csv" \
 		--output="$@"
 
+# --- Step 2.5: Validate cleaned data -----------------------------------------
+# Input: cleaned dataset (galton_clean.csv)
+# Output: sentinel file (.validated) confirming validation passed
+# Purpose: Run pointblank checks before any analysis or modeling
+
+$(PROC)/.validated: $(SRC)/02.5_validate-data.R $(PROC)/galton_clean.csv
+	$(R) $(RFLAGS) $<  \
+		--input="$(PROC)/galton_clean.csv" && \
+	touch $@
+
 # --- Step 3: Exploratory Data Analysis (EDA) --------------------------------
 # Input: cleaned dataset
 # Output: EDA results (summary statistics, plots saved with prefix "eda")
 # Purpose: Generate exploratory statistics and visualizations to understand the data
 
-$(EDA)/eda.csv: $(SRC)/03_eda.R $(PROC)/galton_clean.csv | $(EDA)
+$(EDA)/eda.csv: $(SRC)/03_eda.R $(PROC)/galton_clean.csv $(PROC)/.validated | $(EDA)
 	$(R) $(RFLAGS) $< \
 		--input="$(PROC)/galton_clean.csv" \
 		--out_prefix="$(EDA)/eda"
@@ -57,7 +67,7 @@ $(EDA)/eda.csv: $(SRC)/03_eda.R $(PROC)/galton_clean.csv | $(EDA)
 # Output: regression results (coefficients, metrics saved with prefix "regression")
 # Purpose: Fit a linear regression model to predict child height from parent height and gender
 
-$(REG)/regression.csv: $(SRC)/04_regression-model.R $(PROC)/galton_clean.csv | $(REG)
+$(REG)/regression.csv: $(SRC)/04_regression-model.R $(PROC)/galton_clean.csv $(PROC)/.validated | $(REG)
 	$(R) $(RFLAGS) $< \
 		--input="$(PROC)/galton_clean.csv" \
 		--out_prefix="$(REG)/regression"
@@ -65,6 +75,7 @@ $(REG)/regression.csv: $(SRC)/04_regression-model.R $(PROC)/galton_clean.csv | $
 DATA_TARGETS := \
 	$(RAW)/galton_raw.csv \
 	$(PROC)/galton_clean.csv \
+	$(PROC)/.validated \
 	$(EDA)/eda.csv \
 	$(REG)/regression.csv
 
@@ -95,6 +106,7 @@ reports: $(RPT_TARGETS)
 # remove all generated files and directories
 clean:
 	rm -f $(PROC)/*.csv
+	rm -f $(PROC)/.validated
 	rm -rf $(EDA)
 	rm -rf $(REG)
 	rm -r $(RPT)/galton-heights-regression.html

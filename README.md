@@ -172,7 +172,9 @@ R (4.5.2) as specified in Docker container. The following key packages are also 
 - renv (1.1.6)
 - docopt (0.7.2)
 - knitr (1.51)
+- pointblank (0.12.3)
 - galtonheightshelpr (0.0.0.9000)
+
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
 
