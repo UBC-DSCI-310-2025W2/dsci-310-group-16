@@ -2,8 +2,8 @@ library(docopt)
 library(readr)
 library(dplyr)
 library(tidyr)
+library(galtonheightshelpr)
 
-source("R/rename-and-drop-na.R")
 
 doc <- "
 Usage:
