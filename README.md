@@ -63,6 +63,16 @@ Doing so will:
 - Generate intermediate files  
 - Render final reports
 
+    1) To run only the data pipeline, run the following in Bash:
+
+    ```
+    make data
+    ```
+    2) To generate the report only, run the following in Bash:
+
+    ```
+    make reports
+    ```
 Once the process has completed, the final rendered HTML report can be found `reports/galton-heights-regression.html`.  
 
 11) To clean the repository and remove all intermediate, generated outputs, run the following in Bash:
