@@ -30,7 +30,7 @@ library(knitr)
 ```{r}
 lm_test_results <- read_csv("../results/regression/regression_metrics.csv", show_col_types = FALSE)
 
-rsq <- round(as.numeric(lm_test_results[2, '.estimate']),3)
+rsq <- round(lm_test_results$rsq[1], 3)
 
 ```
 
@@ -141,9 +141,9 @@ kable(lm_test_results, format = "markdown")
 
 ```{r}
 #inline references for below
-rmse <- round(as.numeric(lm_test_results[1, '.estimate']),2)
+rmse <- round(lm_test_results$rmse[1], 2)
 #rsp already defined above for project summary
-mae <- as.numeric(lm_test_results[3, '.estimate'])
+mae <- lm_test_results$mae[1]
 ```
 
 As displayed in @tbl-metrics, the model achieved a root mean squared error (RMSE) of `{r} rmse` inches and a mean absolute error (MAE) of `{r} sprintf("%.2f", mae)` inches, indicating that predictions were typically within approximately `{r} sprintf("%.0f", mae)` inches of the true child height. The model explained `{r} rsq`% of the variation in child height (R² = `{r} rsq`).
