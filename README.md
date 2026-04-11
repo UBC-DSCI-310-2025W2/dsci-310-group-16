@@ -166,19 +166,22 @@ docker system prune
 
 ### Dependencies 
 
-R (4.5.2) as specified in Docker container. Following packages are also defined in renv.lock 
+R (4.5.2) as specified in Docker container. The following key packages are also defined in renv.lock 
 - tidyverse (2.0.0)
 - tidymodels (1.4.1)
 - rmarkdown (2.30)
 - renv (1.1.6)
 - docopt (0.7.2)
 - knitr (1.51)
-- vdiffr (1.0.9)
-- testthat (3.3.2)
 - galtonheightshelpr (0.0.0.9000)
-
 Quarto (1.8.25)  
 Pandoc (3.9) (if installed separately)
+
+To create our associated package [galtonheightshelpr](https://github.com/UBC-DSCI-310-2025W2/galton-heights-helpr), key packages used include:
+- devtools (2.5.0)
+- remotes (2.5.0)
+- vdiffr (1.0.9)
+- usethis (3.2.1)
 
 
 ## License 

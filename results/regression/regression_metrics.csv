@@ -1,4 +1,2 @@
-.metric,.estimator,.estimate
-rmse,standard,2.282182915335475
-rsq,standard,0.61594455207924
-mae,standard,1.7620445544668295
+.estimator,rmse,rsq,mae
+standard,2.2821829153354583,0.6159445520792391,1.762044554466806
