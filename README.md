@@ -52,6 +52,7 @@ It will take a few moments for the environment to initialize and all the package
 This project uses a custom R package, `galtonheightshelpr`, which contains reusable functions developed as part of this analysis.
 
 Since the package is hosted on GitHub, you must install it using `devtools`:
+
 10) Navigate to the console and enter:
 
 ```r
