@@ -129,7 +129,7 @@ While we recommend using  `docker-compose`, the Docker container can also be bui
     -e PASSWORD="group16" \
     dsci-310-group-16
 ```
-4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in Bash will stop the container.  
 6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
@@ -156,7 +156,7 @@ docker pull eao939/dsci310-group16-docker
     eao939/dsci310-group16-docker
 ```
 
-4) Proceed with Step 6-12 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
+4) Proceed with Step 6-11 from the instructions above (i.e. section "Instructions for Use") to finish setting up the environment and run the analysis
 5) To close the container, make sure to save your progress. The command `exit` in bash will stop the container.  
 6) Optional: To clean up the container afterwards, run the following command to clean up any dangling images, unused containers, or unused cache:
 ```bash
