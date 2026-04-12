@@ -72,7 +72,7 @@ From the summary statistics, the average child height is about `{r} mean_child_h
 
 ```{r}
 #| label: tbl-missing-values
-#| tbl-cap: "Number of missing values for each variable in the GaltonFamilies dataset."
+#| tbl-cap: "Number of missing values for each variable in the Galton Height dataset."
 
 
 missing_df <- read_csv("../results/eda/eda_missing.csv", show_col_types = FALSE)
